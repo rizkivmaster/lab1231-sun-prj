@@ -7,7 +7,7 @@ find_package( Boost REQUIRED )
 
 #
 set(EigenIncludeDir /usr/local/include/eigen3)
-set(OpenGMDir /home/rizkivmaster/EXPERIMENT/opengm)
+set(OpenGMDir /home/rizkivmaster/ws/opengm)
 set(ProbImageDir ../external/prob-image/ProbImage)
 
 #
@@ -40,7 +40,7 @@ add_library (
 target_link_libraries ( util color_map  )
 
 #SaliencyFilters library
-set(SALIENCY_DIR /home/rizkivmaster/EXPERIMENT/saliencyfilters)
+set(SALIENCY_DIR /home/rizkivmaster/ws/saliencyfilters)
 include_directories(${SALIENCY_DIR}/src)
 
 set(saliency_libs 

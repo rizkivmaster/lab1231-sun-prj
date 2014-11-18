@@ -34,6 +34,12 @@ target_link_libraries( textonboost util feature classifier )
 add_executable( evaluate evaluate.cpp )
 target_link_libraries( evaluate util feature classifier )
 
+add_executable( trainer trainer.cpp )
+target_link_libraries( trainer util feature classifier )
+
+add_executable( predictor predictor.cpp )
+target_link_libraries( predictor util feature classifier )
+
 
 # Add the subdirectories
 add_subdirectory( algorithm )

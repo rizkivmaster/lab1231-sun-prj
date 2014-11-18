@@ -44,6 +44,8 @@ class Texton
 public:
 	Texton( QSharedPointer< Feature > feature, int n_textons );
 	void train( const QVector< Image< float > >& lab_images, const QVector< QString >& names, int n_samples = 100000  );
+    void saveParameters(const QString & kmeansname, const QString & meansname,const QString & transname);
+    void loadParameters(const QString & kmeansname, const QString & meansname,const QString & transname);
 	Image<short> textonize( const Image< float >& lab_image, const QString & name ) const;
 	QVector< Image<short> > textonize( const QVector< Image<float> > & lab_images, const QVector< QString >& names  ) const;
 };

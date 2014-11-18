@@ -27,11 +27,16 @@ Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const strin
   cv::Mat img_mat = cv::imread(img_dir, CV_LOAD_IMAGE_COLOR);
   ///read unary
   ProbImage unary_mat;
-  unary_mat.decompress( unary_dir.c_str() );
 
+  printf("ok3\n");
+  unary_mat.load( unary_dir.c_str() );
+
+  printf("ok2\n");
   const size_t n_var = img_mat.rows * img_mat.cols;
 
+  printf("ok1\n");
   GraphicalModel gm( opengm::SimpleDiscreteSpace<size_t, size_t>(n_var, n_label) );
+
 
   //printf("%d\n",n_label);
 

@@ -37,210 +37,281 @@
 #include <Eigen/SVD>
 #include <QSet>
 
-Texton::Texton( QSharedPointer<Feature> feature, int n_textons ) :feature_(feature), N_(n_textons) {
-}
+    Texton::Texton( QSharedPointer<Feature> feature, int n_textons ) :feature_(feature), N_(n_textons) {
+    }
 
 #ifdef USE_TBB
-class TBBComputeFeatures{
-	const QSharedPointer<Feature> & feature;
-	const QVector< Image< float > >& lab_images;
-	const QVector< QString >& names;
-	int n_samples;
-	const int feature_size;
-public:
-	QVector<float> features;
-	VectorXd mean;
-	MatrixXd covariance;
-	double count;
-	
-	TBBComputeFeatures( const QSharedPointer<Feature> & feature, const QVector< Image< float > >& lab_images, const QVector< QString >& names, int n_samples ): feature(feature),lab_images(lab_images),names(names),n_samples(n_samples),feature_size(feature->size()){
-		mean = VectorXd::Zero( feature_size );
-		covariance = MatrixXd::Zero( feature_size, feature_size );
-		count = 0;
-	}
-	TBBComputeFeatures( const TBBComputeFeatures & o, tbb::split ):feature(o.feature),lab_images(o.lab_images),names(o.names),n_samples(o.n_samples),feature_size(o.feature_size){
-		mean = VectorXd::Zero( feature_size );
-		covariance = MatrixXd::Zero( feature_size, feature_size );
-		count = 0;
-	}
-	void join( const TBBComputeFeatures & o ){
+    class TBBComputeFeatures{
+    	const QSharedPointer<Feature> & feature;
+    	const QVector< Image< float > >& lab_images;
+    	const QVector< QString >& names;
+    	int n_samples;
+    	const int feature_size;
+    public:
+    	QVector<float> features;
+    	VectorXd mean;
+    	MatrixXd covariance;
+    	double count;
+
+    	TBBComputeFeatures( const QSharedPointer<Feature> & feature, const QVector< Image< float > >& lab_images, const QVector< QString >& names, int n_samples ): feature(feature),lab_images(lab_images),names(names),n_samples(n_samples),feature_size(feature->size()){
+    		mean = VectorXd::Zero( feature_size );
+    		covariance = MatrixXd::Zero( feature_size, feature_size );
+    		count = 0;
+    	}
+    	TBBComputeFeatures( const TBBComputeFeatures & o, tbb::split ):feature(o.feature),lab_images(o.lab_images),names(o.names),n_samples(o.n_samples),feature_size(o.feature_size){
+    		mean = VectorXd::Zero( feature_size );
+    		covariance = MatrixXd::Zero( feature_size, feature_size );
+    		count = 0;
+    	}
+    	void join( const TBBComputeFeatures & o ){
 		// Merge the sample
-		covariance = covariance + o.covariance + (o.mean - mean) * (o.mean - mean).transpose()*(1.0*count*o.count/(count+o.count));
-		mean = (count*mean + o.count*o.mean) / (count + o.count);
-		count = o.count + count;
-		features += o.features;
-	}
-	void operator()( tbb::blocked_range<int> rng ){
-		double samples_per_image = 1.0*n_samples / lab_images.count();
-	
+    		covariance = covariance + o.covariance + (o.mean - mean) * (o.mean - mean).transpose()*(1.0*count*o.count/(count+o.count));
+    		mean = (count*mean + o.count*o.mean) / (count + o.count);
+    		count = o.count + count;
+    		features += o.features;
+    	}
+    	void operator()( tbb::blocked_range<int> rng ){
+    		double samples_per_image = 1.0*n_samples / lab_images.count();
+
 		// Collect some statistics on mean and variance of each feature
-		for( int i=rng.begin(), n_features=rng.begin()*samples_per_image; i<rng.end(); i++ ){
-			Image< float > feature_response = feature->evaluate( lab_images[i], names[i] );
-			for( int j=0; j<feature_response.height(); j++ )
-				for( int i=0; i<feature_response.width(); i++ ){
-					VectorXd x( feature_size );
-					for( int k=0; k<feature_size; k++ )
-						x[k] = feature_response(i,j,k);
-					
-					count += 1;
-					VectorXd delta = x - mean;
-					mean += delta / count;
-					covariance += delta * (x-mean).transpose();
-				}
-			
-			for(;n_features < (i+1)*samples_per_image; n_features++){
-				int x = random() % feature_response.width();
-				int y = random() % feature_response.height();
-				for( int i=0; i<feature_size; i++ )
-					features.append( feature_response( x, y, i ) );
-			}
-		}
-	}
-};
-void computeFeatures( QVector<float> & features, VectorXd & mean, MatrixXd & covariance, const QSharedPointer<Feature> & feature, const QVector< Image< float > >& lab_images, const QVector< QString >& names, int n_samples ){
-	TBBComputeFeatures tbbf( feature, lab_images, names, n_samples );
-	tbb::parallel_reduce( tbb::blocked_range<int>(0, lab_images.count(), 4), tbbf );
-	
+    		for( int i=rng.begin(), n_features=rng.begin()*samples_per_image; i<rng.end(); i++ ){
+    			Image< float > feature_response = feature->evaluate( lab_images[i], names[i] );
+    			for( int j=0; j<feature_response.height(); j++ )
+    				for( int i=0; i<feature_response.width(); i++ ){
+    					VectorXd x( feature_size );
+    					for( int k=0; k<feature_size; k++ )
+    						x[k] = feature_response(i,j,k);
+
+    					count += 1;
+    					VectorXd delta = x - mean;
+    					mean += delta / count;
+    					covariance += delta * (x-mean).transpose();
+    				}
+
+    				for(;n_features < (i+1)*samples_per_image; n_features++){
+    					int x = random() % feature_response.width();
+    					int y = random() % feature_response.height();
+    					for( int i=0; i<feature_size; i++ )
+    						features.append( feature_response( x, y, i ) );
+    				}
+    			}
+    		}
+    	};
+    	void computeFeatures( QVector<float> & features, VectorXd & mean, MatrixXd & covariance, const QSharedPointer<Feature> & feature, const QVector< Image< float > >& lab_images, const QVector< QString >& names, int n_samples ){
+    		TBBComputeFeatures tbbf( feature, lab_images, names, n_samples );
+    		tbb::parallel_reduce( tbb::blocked_range<int>(0, lab_images.count(), 4), tbbf );
+
 	// Compute the final covariance
-	mean = tbbf.mean;
-	covariance = tbbf.covariance / tbbf.count;
-	features = tbbf.features;
-}
+    		mean = tbbf.mean;
+    		covariance = tbbf.covariance / tbbf.count;
+    		features = tbbf.features;
+    	}
 #else
-void computeFeatures( QVector<float> & features, VectorXd & mean, MatrixXd & covariance, const QSharedPointer<Feature> & feature, const QVector< Image< float > >& lab_images, const QVector< QString >& names, int n_samples ){
-	int feature_size = feature->size();
-	int n_features = 0;
-	double samples_per_image = 1.0*n_samples / lab_images.count();
-	
+	// empty: features, mean, covariance
+	// non-empyt: feature, lab_images, names, n_samples
+    	void computeFeatures( QVector<float> & features, VectorXd & mean, MatrixXd & covariance, const QSharedPointer<Feature> & feature, const QVector< Image< float > >& lab_images, const QVector< QString >& names, int n_samples ){
+    		int feature_size = feature->size();
+    		int n_features = 0;
+    		double samples_per_image = 1.0*n_samples / lab_images.count();
+
 	// Do propper whitening: http://en.wikipedia.org/wiki/White_noise#Whitening_a_random_vector
-	
 	// Collect some statistics on mean and variance of each feature
-	mean = VectorXd::Zero( feature_size );
-	covariance = MatrixXd::Zero( feature_size, feature_size );
-	double count = 0;
-	for( int i=0; i<lab_images.count(); i++ ){
-		Image< float > feature_response = feature->evaluate( lab_images[i], names[i] );
-		for( int j=0; j<feature_response.height(); j++ )
-			for( int i=0; i<feature_response.width(); i++ ){
-				VectorXd x( feature_size );
-				for( int k=0; k<feature_size; k++ )
-					x[k] = feature_response(i,j,k);
-				
-				count += 1;
-				VectorXd delta = x - mean;
-				mean += delta / count;
-				covariance += delta * (x-mean).transpose();
-			}
-		
-		for(;n_features < (i+1)*samples_per_image; n_features++){
-			int x = random() % feature_response.width();
-			int y = random() % feature_response.height();
-			for( int i=0; i<feature_size; i++ )
-				features.append( feature_response( x, y, i ) );
-		}
-	}
+    		mean = VectorXd::Zero( feature_size );
+    		covariance = MatrixXd::Zero( feature_size, feature_size );
+    		double count = 0;
+    		for( int i=0; i<lab_images.count(); i++ ){
+    			Image< float > feature_response = feature->evaluate( lab_images[i], names[i] );
+    			for( int j=0; j<feature_response.height(); j++ )
+    				for( int i=0; i<feature_response.width(); i++ ){
+    					VectorXd x( feature_size );
+    					for( int k=0; k<feature_size; k++ )
+    						x[k] = feature_response(i,j,k);
+
+    					count += 1;
+    					VectorXd delta = x - mean;
+    					mean += delta / count;
+    					covariance += delta * (x-mean).transpose();
+    				}
+
+    				for(;n_features < (i+1)*samples_per_image; n_features++){
+    					int x = random() % feature_response.width();
+    					int y = random() % feature_response.height();
+    					for( int i=0; i<feature_size; i++ )
+    						features.append( feature_response( x, y, i ) );
+    				}
+    			}
 	// Compute the final covariance
-	covariance = covariance / count;
-}
+    			covariance = covariance / count;
+    		}
 #endif
-void Texton::train(const QVector< Image< float > >& lab_images, const QVector<QString> & names, int n_samples ) {
-	QVector< float > features;
-	int feature_size = feature_->size();
-	MatrixXd covariance;
-	computeFeatures( features, mean_, covariance, feature_, lab_images, names, n_samples );
-	
-	int n_features = features.count() / feature_size;
-	
+    		void Texton::train(const QVector< Image< float > >& lab_images, const QVector<QString> & names, int n_samples ) {
+    			QVector< float > features;
+    			int feature_size = feature_->size();
+    			MatrixXd covariance;
+    			computeFeatures( features, mean_, covariance, feature_, lab_images, names, n_samples );
+
+    			int n_features = features.count() / feature_size;
+
 	// Do propper whitening: http://en.wikipedia.org/wiki/White_noise#Whitening_a_random_vector
 // 	// No Whitening
 // 	transformation_ = MatrixXd::Identity( feature_size, feature_size );
 // 	// Simple Whitening
 // 	transformation_ = covariance.diagonal().array().inverse().sqrt().matrix().asDiagonal();
 	// True Whitening
-	JacobiSVD< MatrixXd > svd( covariance, ComputeThinU | ComputeThinV );
-	transformation_ = svd.singularValues().array().inverse().sqrt().matrix().asDiagonal() * svd.matrixV().transpose();
-	
+    			JacobiSVD< MatrixXd > svd( covariance, ComputeThinU | ComputeThinV );
+    			transformation_ = svd.singularValues().array().inverse().sqrt().matrix().asDiagonal() * svd.matrixV().transpose();
+
 	// Whitening (zero mean, 1 stddev)
-	for( int i=0, k=0; i<n_features; i++ ){
-		VectorXd x( feature_size );
-		for( int j=0,kk=k; j<feature_size; j++, kk++ )
-			x[j] = features[kk];
-		x = transformation_*(x-mean_);
-		for( int j=0; j<feature_size; j++, k++ )
-			features[k] = x[j];
-	}
-	
+    			for( int i=0, k=0; i<n_features; i++ ){
+    				VectorXd x( feature_size );
+    				for( int j=0,kk=k; j<feature_size; j++, kk++ )
+    					x[j] = features[kk];
+    				x = transformation_*(x-mean_);
+    				for( int j=0; j<feature_size; j++, k++ )
+    					features[k] = x[j];
+    			}
+
 	// Train the texton directory
-	kmeans_.train( features.data(), feature_size, n_features, N_ );
-}
-Image< short > Texton::textonize(const Image< float >& lab_image, const QString & name ) const{
-	Image< float > feature_response = feature_->evaluate( lab_image, name );
+    			kmeans_.train( features.data(), feature_size, n_features, N_ );
+    		}
+    		void Texton::saveParameters(const QString & kmeansname, const QString & meansname, const QString & transname){
+	//save kmeans_
+    			kmeans_.save(kmeansname);
+	//save means_
+    			{
+    				QFile file( meansname );
+    				if (!file.open(QFile::WriteOnly))
+    					qFatal( "Failed to save means to '%s'", qPrintable( meansname ) );
+    				QDataStream s( &file );
+    				QVector<double> input(feature_->size());
+    				for(int ii = 0; ii < feature_->size();ii++)
+    				{
+    					input[ii] = mean_[ii];
+    				}
+    				s << input;
+    				file.close();
+    			}
+	//load transformation
+    			{
+    				QFile file( transname );
+    				if (!file.open(QFile::WriteOnly))
+    					qFatal( "Failed to save transformation to '%s'", qPrintable( transname ) );
+    				QDataStream s( &file );
+    				QVector<double> input(feature_->size()*feature_->size());
+    				for(int ii = 0,tt=0; ii < feature_->size();ii++)
+    					for(int jj=0; jj < feature_->size();jj++,tt++)
+    						input[tt] = transformation_(ii,jj);
+
+    					s << input;
+    					file.close();
+
+    				}
+    			}
+    			void Texton::loadParameters(const QString & kmeansname, const QString & meansname, const QString & transname){
+	//load kmeans_
+    				kmeans_.load(kmeansname);
+	//load means_
+    				{
+    					QFile file( meansname );
+    					if (!file.open(QFile::ReadOnly))
+    						qFatal( "Failed to load means to '%s'", qPrintable( meansname ) );
+    					QDataStream s( &file );
+    					QVector<double> input(feature_->size());
+    					mean_ = VectorXd::Zero( feature_->size() );
+    					s >> input;
+    					for(int ii = 0; ii < feature_->size();ii++)
+    					{
+    						mean_[ii] = input[ii];
+    					}
+    					file.close();
+    				}
+    				//load transformation
+    				{
+    					QFile file( transname );
+    					if(!file.open(QFile::ReadOnly))
+    						qFatal("Failed to load transformation to '%s'",qPrintable( transname));
+    					QDataStream s(&file);
+    					QVector<double> input(feature_->size()*feature_->size());
+    					transformation_ = MatrixXd(feature_->size(),feature_->size());
+    					s >> input;
+    					for(int ii = 0,tt=0; ii < feature_->size();ii++)
+    						for(int jj=0; jj < feature_->size();jj++,tt++)
+    							transformation_(ii,jj) = input[tt];
+    						file.close();
+
+    					}
+    				}
+
+// use feature_, kmeans_, means_
+// for texton param 
+    				Image< short > Texton::textonize(const Image< float >& lab_image, const QString & name ) const{
+    					Image< float > feature_response = feature_->evaluate( lab_image, name );
 	// Whitening (zero mean, 1 stddev)
-	for( int j=0; j<feature_response.height(); j++ )
-		for( int i=0; i<feature_response.width(); i++ ){
-			VectorXd x( feature_response.depth() );
-			for( int k=0; k<feature_response.depth(); k++ )
-				x[k] = feature_response(i,j,k);
-			x = transformation_*(x - mean_);
-			for( int k=0; k<feature_response.depth(); k++ )
-				feature_response(i,j,k) = x[k];
-		}
-	return kmeans_.evaluate( feature_response );
-}
+    					for( int j=0; j<feature_response.height(); j++ )
+    						for( int i=0; i<feature_response.width(); i++ ){
+    							VectorXd x( feature_response.depth() );
+    							for( int k=0; k<feature_response.depth(); k++ )
+    								x[k] = feature_response(i,j,k);
+    							x = transformation_*(x-mean_);
+    							for( int k=0; k<feature_response.depth(); k++ )
+    								feature_response(i,j,k) = x[k];
+    						}
+    						return kmeans_.evaluate( feature_response );
+    					}
 #ifdef USE_TBB
-class TBBTextonize{
-	QVector< Image< short > > &r;
-	const QVector< Image< float > >& lab_images;
-	const QVector< QString >& names;
-	const Texton & texton;
-public:
-	TBBTextonize(QVector< Image< short > > &r, const QVector< Image< float > >& lab_images, const QVector< QString >& names, const Texton & texton):r(r),lab_images(lab_images),names(names),texton(texton){
-	}
-	void operator()( tbb::blocked_range<int> rng ) const{
-		for( int i=rng.begin(); i<rng.end(); i++ )
-			r[i] = texton.textonize( lab_images[i], names[i] );
-	}
-};
-QVector< Image< short > > Texton::textonize(const QVector< Image< float > >& lab_images, const QVector< QString >& names) const {
-	QVector< Image< short > > r( lab_images.count() );
-	tbb::parallel_for(tbb::blocked_range<int>(0, lab_images.count(), 1), TBBTextonize(r, lab_images, names, *this));
-	return r;
-}
+    					class TBBTextonize{
+    						QVector< Image< short > > &r;
+    						const QVector< Image< float > >& lab_images;
+    						const QVector< QString >& names;
+    						const Texton & texton;
+    					public:
+    						TBBTextonize(QVector< Image< short > > &r, const QVector< Image< float > >& lab_images, const QVector< QString >& names, const Texton & texton):r(r),lab_images(lab_images),names(names),texton(texton){
+    						}
+    						void operator()( tbb::blocked_range<int> rng ) const{
+    							for( int i=rng.begin(); i<rng.end(); i++ )
+    								r[i] = texton.textonize( lab_images[i], names[i] );
+    						}
+    					};
+    					QVector< Image< short > > Texton::textonize(const QVector< Image< float > >& lab_images, const QVector< QString >& names) const {
+    						QVector< Image< short > > r( lab_images.count() );
+    						tbb::parallel_for(tbb::blocked_range<int>(0, lab_images.count(), 1), TBBTextonize(r, lab_images, names, *this));
+    						return r;
+    					}
 #else
-QVector< Image< short > > Texton::textonize(const QVector< Image< float > >& lab_images, const QVector< QString >& names) const {
-	QVector< Image< short > > r;
-	for( int i=0; i<lab_images.count(); i++ )
-		r.append( textonize( lab_images[i], names[i] ) );
-	return r;
-}
+    					QVector< Image< short > > Texton::textonize(const QVector< Image< float > >& lab_images, const QVector< QString >& names) const {
+    						QVector< Image< short > > r;
+    						for( int i=0; i<lab_images.count(); i++ )
+    							r.append( textonize( lab_images[i], names[i] ) );
+    						return r;
+    					}
 #endif
-void saveTextons(const QString& filename, const QVector< Image< short > >& textons, const QVector< QString >& names) {
-	QFile file( filename );
-	if (!file.open(QFile::WriteOnly))
-		qFatal( "Failed to save textons to '%s'", qPrintable( filename ) );
-	QDataStream s( &file );
-	for( int i=0; i<textons.count(); i++ )
-		s << names[i] << textons[i];
-	file.close();
-}
-QVector< Image< short > > loadTextons(const QString& filename, const QVector< QString >& names) {
-	QSet< QString > snames = QSet< QString >::fromList( names.toList() );
-	QFile file( filename );
-	if (!file.open(QFile::ReadOnly))
-		qFatal( "Failed to load textons to '%s'", qPrintable( filename ) );
-	QDataStream s( &file );
-	QMap< QString, Image< short > > texton_map;
-	while(!s.atEnd()){
-		QString name;
-		Image< short > textons;
-		s >> name >> textons;
-		if (snames.contains( name ))
-			texton_map[ name ] = textons;
-	}
-	file.close();
-	
-	QVector< Image< short > > r;
-	foreach( QString name, names )
-		r.append( texton_map[name] );
-	return r;
-}
+    					void saveTextons(const QString& filename, const QVector< Image< short > >& textons, const QVector< QString >& names) {
+    						QFile file( filename );
+    						if (!file.open(QFile::WriteOnly))
+    							qFatal( "Failed to save textons to '%s'", qPrintable( filename ) );
+    						QDataStream s( &file );
+    						for( int i=0; i<textons.count(); i++ )
+    							s << names[i] << textons[i];
+    						file.close();
+    					}
+    					QVector< Image< short > > loadTextons(const QString& filename, const QVector< QString >& names) {
+    						QSet< QString > snames = QSet< QString >::fromList( names.toList() );
+    						QFile file( filename );
+    						if (!file.open(QFile::ReadOnly))
+    							qFatal( "Failed to load textons to '%s'", qPrintable( filename ) );
+    						QDataStream s( &file );
+    						QMap< QString, Image< short > > texton_map;
+    						while(!s.atEnd()){
+    							QString name;
+    							Image< short > textons;
+    							s >> name >> textons;
+    							if (snames.contains( name ))
+    								texton_map[ name ] = textons;
+    						}
+    						file.close();
+
+    						QVector< Image< short > > r;
+    						foreach( QString name, names )
+    						r.append( texton_map[name] );
+    						return r;
+    					}

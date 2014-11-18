@@ -151,7 +151,7 @@ for(int blockIndex = 0; blockIndex<blockDim; blockIndex++)
     tmpFilenames.append(filenames.at(fileIndex));
     fileIndex++;
   }
-  loadVOC2010byNames( tmpImages, tmpLabels, tmpNames, TEST, filenames);
+  loadVOC2010byNames( tmpImages, tmpLabels, tmpNames, filenames);
   qDebug("(test)  Converting to Lab");
   tmpLab_images = RGBtoLab( tmpImages );
     // Evalutation

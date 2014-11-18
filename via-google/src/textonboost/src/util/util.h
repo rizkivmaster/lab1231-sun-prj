@@ -45,4 +45,4 @@ enum DataType{
 // void loadVOC2010( QVector< ColorImage >& images, QVector< LabelImage >& annotations, QVector< QString > & names, int type );
 void loadImages( QVector< ColorImage >& images, QVector< LabelImage >& annotations, QVector< QString > & names, int type );
 QVector< QString > listVOC2010( int type );
-void loadVOC2010byNames(QVector< ColorImage >& images, QVector< LabelImage >& annotations, QVector< QString > & names, int type,QVector< QString >& filenames);
+void loadVOC2010byNames(QVector< ColorImage >& images, QVector< LabelImage >& annotations, QVector< QString > & names,QVector< QString >& filenames);
