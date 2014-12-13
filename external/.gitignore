@@ -1,9 +1,4 @@
 # ignore external src dirs
-pff-segment
-prob-image
-robustpn
-textonboost
-vlfeat-0.9.19
-opengm-2.3.3
-rapidxml-1.13
-VOCdevkit
+*
+!script-download
+!README
