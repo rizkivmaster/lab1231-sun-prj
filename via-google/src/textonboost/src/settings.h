@@ -46,13 +46,13 @@ static const char VOC2010_TEST_FILE  [] = "/home/rizkivmaster/ws/TextonBoost/goo
 static const char VOC2010_BBOX_DIRECTORY [] = "data/VOC2010_BBox/";
 
 
-static const int N_TEXTONS = 400;
+static const int N_TEXTONS = 50;
 ///DEFAULT TO static const int N_TEXTONS = 400;
 
 static const float FILTER_BANK_SIZE = 1.0;
 
 // Boosting parameters
-static const int N_BOOSTING_ROUNDS  = 3000; // Number of boosting rounds
+static const int N_BOOSTING_ROUNDS  = 10000; // Number of boosting rounds
 static const int N_CLASSIFIERS      = 200; // Number of random classifiers to test [per round]
 static const int N_THRESHOLDS       = 100; // Number of thresholds to test [per round]
 /*static const int N_BOOSTING_ROUNDS  = 10000; // Number of boosting rounds

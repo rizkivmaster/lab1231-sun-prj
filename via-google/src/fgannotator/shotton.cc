@@ -115,6 +115,7 @@ void set_1st_order(const cv::Mat img_mat,const cv::Mat_<double> saliency_mat, Pr
       const size_t shape[] = {2};
       opengm::ExplicitFunction<float> energy(shape, shape+1);
 
+      //FIRST FORMULATION
       energy(1) = -unary_mat(x,y,object_label) + (1-saliency_mat.at<double>(y,x));
       energy(0) = 100000000.0;
 
@@ -123,6 +124,7 @@ void set_1st_order(const cv::Mat img_mat,const cv::Mat_<double> saliency_mat, Pr
           energy(0) = min(energy(0),unary_mat(x,y,i));
 
       energy(0) +=alpha*saliency_mat.at<double>(y,x);
+      //SECOND FORMULATION
    
  
       GraphicalModel::FunctionIdentifier fid = gm.addFunction(energy);
