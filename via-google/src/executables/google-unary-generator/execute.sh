@@ -5,7 +5,7 @@ echo "Google Training List: $google_train_list"
 echo "DPM Image folder: $dpm_img_folder"
 echo "Images list: $google_object_file"
 echo "Normal Param: $normal_param"
-echo "Quota per class: $google_size"
+echo "Quota per class: $google_sampling_size"
 echo "##################################"
 `cut -d , -f 1 $google_object_file > objid_tmp`
 `cut -d , -f 2 $google_object_file > imgname_tmp`

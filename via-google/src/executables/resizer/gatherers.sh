@@ -30,7 +30,7 @@ do
 	for imgname in $imgnames		
 	do
 		echo "resizing $imgname"
-		mogrify -resize '500x500>' $imgname
+		mogrify -resize '100x100>' $imgname
 	done
 	(( c++ ))
 done

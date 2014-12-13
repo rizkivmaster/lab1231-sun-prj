@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include <shotton/shotton.h>
-#include <util/util.h>
+// #include <util/util.h>
 #include <QVector>
 #include <QString>
 #include <QRgb>

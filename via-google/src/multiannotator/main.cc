@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include <shotton/shotton.h>
-#include <util/util.h>
+// #include <util/util.h>
 #include <QVector>
 #include <QString>
 #include <QRgb>
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
   const string img_dir = argv[3];
   const string unary_dir = argv[4];
   QString png_dir = argv[5];
-  const string csv_dir = argv[6];
+  // const string csv_dir = argv[6];
 
   // Train
   shotton::EnergyParam energy_param;
@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
     }
   }*/
   png_write(ann,png_dir);
-  util::csv_write(ann, csv_dir);
+  // util::csv_write(ann, csv_dir);
   // cv::Mat output = util::ann2img(ann,"msrc");
   // imwrite(ann_img_dir,output);
 

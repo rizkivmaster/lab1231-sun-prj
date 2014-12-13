@@ -8,5 +8,5 @@ imgfolddirs=`ls -d $dpm_img_folder/*`
 
 for path in $imgfolddirs
 do
-	mogrify -resize '500x500>' $path
+	mogrify -resize '100x100>' $path
 done

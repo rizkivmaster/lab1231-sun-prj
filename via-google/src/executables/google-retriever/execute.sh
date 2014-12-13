@@ -4,7 +4,7 @@
 source ../config
 echo "Class list file: $object_list_file"
 echo "Target dump folder: $google_folder"
-echo "Downloads per class: $google_size"
+echo "Downloads per class: $google_download_size"
 echo "Target OBJECT-GOOGLE file: $google_object_file"
 `rm $google_object_file`
 targetfolder=$google_folder
@@ -19,7 +19,7 @@ c=0
 max=`wc -l < $object_list_file`
 while [ $c -lt $max ]
 do
-	query=${names[$c]} count=${google_size:-20} parallel=${3:-10} safe=$4 opts=$5 timeout=${6:-10} tries=${7:-2}
+	query=${names[$c]} count=${google_download_size:-20} parallel=${3:-10} safe=$4 opts=$5 timeout=${6:-10} tries=${7:-2}
 	agent1=${8:-Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.117 Safari/537.36} agent2=${9:-Googlebot-Image/1.0}
 	query_esc=`perl -e 'use URI::Escape; print uri_escape($ARGV[0]);' "$query"`
 	dir=`echo "$query_esc" | sed 's/%20/-/g'`-`date +%s`; cd "$targetfolder"
