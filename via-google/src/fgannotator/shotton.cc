@@ -35,8 +35,8 @@ Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const strin
     cv::Mat img_mat = cv::imread(img_dir, CV_LOAD_IMAGE_COLOR);
     ///read unary
     ProbImage unary_mat;
-    //debug
-    unary_mat.decompress( unary_dir.c_str() );
+
+    unary_mat.load( unary_dir.c_str() );
 
     Saliency saliency;
     const cv::Mat_<double> saliencyMap = saliency.saliency(img_mat);
@@ -46,7 +46,7 @@ Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const strin
 
     GraphicalModel gm( opengm::SimpleDiscreteSpace<size_t, size_t>(n_var, n_label) );
 
-    //printf("%d\n",n_label);
+    printf("%d\n",n_label);
 
     set_1st_order(img_mat, saliencyMap, unary_mat, n_label, object_label, gm);
 
@@ -136,9 +136,11 @@ void infer(const string method, GraphicalModel gm, const size_t n_var, Eigen::Ma
 
 void set_1st_order(const cv::Mat img_mat, const cv::Mat_<double> saliency_mat, ProbImage unary_mat, const size_t n_label, const size_t object_label, GraphicalModel &gm)
 {
-    float alpha = 0.0;
+    float alpha = 1.0;
     float label_penalty = 1.0;
     using namespace std;
+    printf("Unary width: %d\n",unary_mat.width());
+    printf("Unary height: %d\n",unary_mat.width());
     assert(unary_mat.width() == img_mat.cols && "err width");
     assert(unary_mat.height() == img_mat.rows && "err height");
 
@@ -166,9 +168,11 @@ void set_1st_order(const cv::Mat img_mat, const cv::Mat_<double> saliency_mat, P
             const size_t shape[] = {n_label};
             opengm::ExplicitFunction<float> energy(shape, shape + 1);
 
+            energy(object_label) = -unary_mat(x, y, object_label);
+
             for (size_t i = 0; i < n_label; i++)
             {
-                energy(i) = -unary_mat(x, y, i);
+                
 
                 if (i != object_label)
                 {
@@ -176,10 +180,13 @@ void set_1st_order(const cv::Mat img_mat, const cv::Mat_<double> saliency_mat, P
                 }
                 else
                 {
-                    energy(i) += alpha * (1 - saliency_mat.at<double>(y, x));
+                    energy(i) += 0.5 * (1 - saliency_mat.at<double>(y, x));
                 }
-                // if (i != object_label && i != 0 )
-                //     energy(i) += label_penalty;
+
+                // energy(0) += alpha * saliency_mat.at<double>(y, x);
+                // energy(object_label) += alpha * (1 - saliency_mat.at<double>(y, x));
+                if (i != object_label && i != 0 )
+                    energy(i) += label_penalty;
             }
 
             GraphicalModel::FunctionIdentifier fid = gm.addFunction(energy);

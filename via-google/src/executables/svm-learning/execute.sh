@@ -1,15 +1,10 @@
 source ../config
-echo "Trainer path: $train_bin"
-echo "Target param folder: $improved_param"
-echo "Google Image-Object linker: $google_object_file"
-echo "DPM Image folder: $dpm_img_folder"
-echo "Google PNG folder: $google_png_dir"
-
-echo "VOC training folder: $voc_img_folder"
-echo "VOC PNG folder: $voc_png_folder"
-echo "VOC init train list: $init_train_path"
+#yang dibutuhkan: parameter dan targetmodel directory
+echo "SVM learner path: $svm_learner_path"
+echo "SVM model path: $svm_model_path"
 echo "Combined train list: $combined_train_list"
 echo "##################################"
+
 #relist
 `cut -d , -f 1 $google_object_file > objid_tmp`
 `cut -d , -f 2 $google_object_file > imgname_tmp`
@@ -43,9 +38,12 @@ done
 `cat $init_train_path >> $combined_train_list`
 
 #create google 
-echo "START TRAINING IMPROVED MODEL"
+echo "START TRAINING SVM"
 
-#for TextonBoost
-#`$train_bin $combined_train_list  $voc_img_folder $voc_png_folder $improved_param`
+#Generating unaries for SVM Learning
+`$predict_bin $normal_param $combined_train_list $voc_img_folder  $google_unaries_dir`
+#SVM Learning
+`$svm_learner_path -w 2 -c 1 $combined_train_list $svm_model_path`
 
-
+# echo "$svm_learner_path -w 2 -c 1 $combined_train_list $svm_model_path"
+# `$svm_learner_path -w 2 -c 1 $combined_train_list $svm_model_path`

@@ -35,66 +35,81 @@ date +"%m-%d-%y %T" >> $logpath
 # cd ..
 # #train initial parameters START HERE
 
-echo "START GENERATING INITIAL MODEL" >> $logpath
-date +"%m-%d-%y %T" >> $logpath
+# echo "START GENERATING INITIAL MODEL" >> $logpath
+# date +"%m-%d-%y %T" >> $logpath
 
-cd param-generator
-./execute.sh
-cd ..
-# #generate google unaries
+# cd param-generator
+# ./execute.sh 2>&1 | tee temp_log
+# cat temp_log >> $logpath
+# cd ..
+
+
+#FROM HERE
 
 echo "START GENERATING GOOGLE UNARY" >> $logpath
 date +"%m-%d-%y %T" >> $logpath
 
 cd google-unary-generator
-./execute.sh
+./execute.sh 2>&1 | tee temp_log
+cat temp_log >> $logpath
 cd ..
-# # #commit F/G segmentation
 
 echo "START F/G SEGMENTATION" >> $logpath
 date +"%m-%d-%y %T" >> $logpath
 
 cd fgannotator
-./execute.sh
+./execute.sh 2>&1 | tee temp_log
+cat temp_log >> $logpath
 cd ..
-# # #train voc with google/ COMBINATION
 
-echo "START IMPROVING MODEL" >> $logpath
+
+# echo "START IMPROVING MODEL" >> $logpath
+# date +"%m-%d-%y %T" >> $logpath
+
+# cd param-enhancer
+# ./execute.sh 2>&1 | tee temp_log
+# cat temp_log >> $logpath
+# cd ..
+
+echo "START SVM LEARNER" >> $logpath
 date +"%m-%d-%y %T" >> $logpath
 
-cd param-enhancer
-./execute.sh
+cd svm-learning
+./execute.sh 2>&1 | tee temp_log
+cat temp_log >> $logpath
 cd ..
-# # #generate test unary DTE
+
 echo "START TEST UNARY GENERATION" >> $logpath
 date +"%m-%d-%y %T" >> $logpath
 
 cd test-unary-generator
-./execute.sh
+./execute.sh 2>&1 | tee temp_log
+cat temp_log >> $logpath
 cd ..
-# # #perform multiclass segmentation
+
 echo "START TESTSET ANNOTATION" >> $logpath
 date +"%m-%d-%y %T" >> $logpath
 
 cd multiannotation
-./execute.sh
+./execute.sh 2>&1 | tee temp_log
+cat temp_log >> $logpath
 cd ..
 
-# #performance evaluation
 
-echo "START EVALUATION" >> $logpath
-date +"%m-%d-%y %T" >> $logpath
+# echo "START EVALUATION" >> $logpath
+# date +"%m-%d-%y %T" >> $logpath
 
-cd evaluation
-./execute.sh
-cd ..
+# cd evaluation
+# ./execute.sh
+# cd ..
 
-echo "START BASELINE EVALUATION" >> $logpath
-date +"%m-%d-%y %T" >> $logpath
+# echo "START BASELINE PREDICTION" >> $logpath
+# date +"%m-%d-%y %T" >> $logpath
 
-cd baseline-evaluation
-./execute.sh
-cd ..
+# cd baseline-prediction
+# ./execute.sh 2>&1 | tee temp_log
+# cat temp_log >> $logpath
+# cd ..
 
 
 cd ../..

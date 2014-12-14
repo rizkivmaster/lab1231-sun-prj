@@ -4,22 +4,26 @@
 #main folder
 main_root="/home/rizkivmaster/ws/lab1231-sun-prj/via-google"
 #root dari folder google images
-google_root="/home/rizkivmaster/ws/datasets/google-sun"
+google_root="/home/rizkivmaster/ws/datasets/dummy_google"
 #jumlah gambar yang akan didownload
 google_download_size=1
 #jumlah gambar yang akan digunakan per kelas
-google_sampling_size=2
+google_sampling_size="1"
 #VOC root
-voc_root="/home/rizkivmaster/ws/datasets/voc2010"
+voc_root="/home/rizkivmaster/ws/datasets/dummy_voc_2010"
 #jumlah gambar VOC yang akan dipakai untuk training
-voc_train_size=600
+voc_train_size=3
+#maximum width and height
+image_length_max=250
+#experiment folder
+exp_folder="/home/rizkivmaster/ws/results"
 
 
 
 binary_root="$main_root/build"
 source_root="$main_root/src"
 executables_root="$source_root/executables"
-exp_folder="/home/rizkivmaster/ws/results"
+
 
 #GOOGLE IMAGE -OBJECT
 #daftar gambar yg didownload
@@ -31,8 +35,8 @@ object_dpm_file="$executables_root/object_dpm"
 object_list_file="$executables_root/classlist"
 
 #GOOGLEIMAGES
-google_folder="$google_root/raw" #raw images to download
-dpm_img_folder="$google_root/resized" #isolated images to download
+google_folder="$google_root/JPEGImages" #raw images to download
+dpm_img_folder="$google_root/JPEGImages" #isolated images to download
 google_object_file="$google_root/google_object"
 
 
@@ -84,10 +88,13 @@ normal_param="$current_exp/init_param"
 improved_param="$current_exp/improved_param"
 google_test_png_dir="$current_exp/test_png"
 google_test_csv_dir="$current_exp/test_csv"
-google_test_unary_path="$current_exp/test_unaries"
+#ok
+google_test_unary_path="$current_exp/unaries"
 normal_test_png_dir="$current_exp/normal_png"
 normal_test_csv_dir="$current_exp/normal_csv"
 normal_test_unary_path="$current_exp/normal_unaries"
+svm_model_path="$current_exp/svm_model"
+svm_output_path="$current_exp/svm_output"
 
 #VOC
 voc_img_folder="$voc_root/JPEGImages"
@@ -95,6 +102,7 @@ voc_png_folder="$voc_root/SegmentationClass"
 voc_train_list="$voc_root/split/Train.txt"
 voc_test_list="$voc_root/split/Test.txt"
 voc_gt_csv="$voc_root/SegmentationClass-csv"
+voc_evaluator_folder="$executables_root/VOCcode"
 
 #TextonBoost
 train_bin="$binary_root/src/textonboost/src/trainer"
@@ -104,6 +112,11 @@ settings_path="$source_root/textonboost/src/settings.h"
 #MRF
 fg_annotator_path="$binary_root/src/fgannotator/fgmain"
 multiannotator_path="$binary_root/src/multiannotator/mtmain"
+
+#SVM
+svm_root="$binary_root/src/svm-struct-ss"
+svm_learner_path="$svm_root/svm_struct/do_learn"
+svm_classify_path="$svm_root/svm_struct/do_classify"
 
 #EVALUATOR
 evaluator_path="/home/rizkivmaster/ws/lab1231-sun-prj/util/src-py/evaluator_tor.py"

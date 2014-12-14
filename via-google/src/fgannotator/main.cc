@@ -12,6 +12,7 @@
 #include <QString>
 #include <QImage>
 #include <QtGlobal>
+#include "../textonboost/src/settings.h"
 
 
 // void png_write(Eigen::MatrixXi m, QString png_path,size_t label) {
@@ -39,7 +40,7 @@
 
 void png_write(Eigen::MatrixXi m, QString png_path) {
 
-  QString colorfile = "VOC2010.ct";
+  QString colorfile = VOC2010_COLOR_PATH.c_str();
   QVector<QRgb> colorTable;
   QFile file(colorfile);
   if (!file.open(QFile::ReadOnly))

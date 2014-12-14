@@ -16,6 +16,8 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DI
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${TBB_INCLUDE_DIR} ${EIGEN3_INCLUDE_DIR})
 
+include_directories(./)
+
 # fPIC for our swig shared library
 add_definitions(-fPIC)
 

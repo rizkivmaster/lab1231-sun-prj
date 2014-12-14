@@ -51,7 +51,7 @@ Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const strin
   cv::Mat img_mat = cv::imread(img_dir, CV_LOAD_IMAGE_COLOR);
   //read unary
   ProbImage unary_matrix;
-  unary_matrix.decompress( unary_dir.c_str() );
+  unary_matrix.load( unary_dir.c_str() );
 
   const size_t n_var = img_mat.rows * img_mat.cols;
 
@@ -203,7 +203,7 @@ void set_1st_order(cv::Mat img_mat, ProbImage unary_matrix,double* unary_weights
       {
 
         // assert(unary_weights[util::flat_idx(x, y, img_mat.cols)]==1.0);
-        energy(i) = max(0.0,unary_weights[util::flat_idx(x, y, img_mat.cols)]) *-unary_matrix(x*5,y*5,i);//debug resize
+        energy(i) = max(0.0,unary_weights[util::flat_idx(x, y, img_mat.cols)]) *-unary_matrix(x,y,i);
       }
       GraphicalModel::FunctionIdentifier fid = gm.addFunction(energy);      
       // add a factor

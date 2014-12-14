@@ -1,0 +1,6 @@
+
+SVM learner path: /home/rizkivmaster/ws/lab1231-sun-prj/via-google/build/src/svm-struct-ss/svm_struct/do_learn
+SVM model path: /home/rizkivmaster/ws/results/11584/svm_model
+Combined train list: /home/rizkivmaster/ws/results/11584/combined_train_list
+##################################
+START TRAINING SVM

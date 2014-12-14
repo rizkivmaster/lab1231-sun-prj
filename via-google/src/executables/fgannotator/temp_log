@@ -1,0 +1,13 @@
+
+FG Annotator path: /home/rizkivmaster/ws/lab1231-sun-prj/via-google/build/src/fgannotator/fgmain
+Google Image-Object linker: /home/rizkivmaster/ws/datasets/dummy_google/google_object
+DPM Image folder: /home/rizkivmaster/ws/datasets/dummy_google/JPEGImages
+Google Unaries folder: /home/rizkivmaster/ws/results/11584/unaries
+Google Annotation folder: 
+Google PNG folder: /home/rizkivmaster/ws/results/11584/png
+##################################
+Annotating aeroplane0001.jpg
+/home/rizkivmaster/ws/lab1231-sun-prj/via-google/build/src/fgannotator/fgmain VOC 21 1 /home/rizkivmaster/ws/datasets/dummy_google/JPEGImages/aeroplane0001.jpg  /home/rizkivmaster/ws/results/11584/unaries/aeroplane0001.unary /home/rizkivmaster/ws/results/11584/png/aeroplane0001.png
+./execute.sh: line 36: train():: command not found
+Annotating bicycle0001.jpg
+/home/rizkivmaster/ws/lab1231-sun-prj/via-google/build/src/fgannotator/fgmain VOC 21 2 /home/rizkivmaster/ws/datasets/dummy_google/JPEGImages/bicycle0001.jpg  /home/rizkivmaster/ws/results/11584/unaries/bicycle0001.unary /home/rizkivmaster/ws/results/11584/png/bicycle0001.png

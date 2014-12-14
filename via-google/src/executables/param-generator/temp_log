@@ -1,0 +1,40 @@
+
+Trainer path: /home/rizkivmaster/ws/lab1231-sun-prj/via-google/build/src/textonboost/src/trainer
+VOC training folder: /home/rizkivmaster/ws/datasets/dummy_voc_2010/JPEGImages
+VOC PNG folder: /home/rizkivmaster/ws/datasets/dummy_voc_2010/SegmentationClass
+VOC train list: /home/rizkivmaster/ws/datasets/dummy_voc_2010/split/Train.txt
+Normal Param: /home/rizkivmaster/ws/results/11584/init_param
+VOC Trainer size: 3
+Experiment folder: /home/rizkivmaster/ws/results/11584
+Init train list: /home/rizkivmaster/ws/results/11584/init_train_list
+##################################
+START TRAINING INITIAL MODEL
+WELCOME TO THE ALICE WONDERLAND!
+(train) Loading the database
+(train) Converting to Lab
+(train) Loading Parameters of Feature 0
+(train) Cumulating Parameters of Feature 0
+(train) Loading Parameters of Feature 1
+(train) Cumulating Parameters of Feature 1
+(train) Loading Parameters of Feature 2
+(train) Cumulating Parameters of Feature 2
+(train) Loading Parameters of Feature 3
+(train) Cumulating Parameters of Feature 3
+(train) Seat tight! Boosting
+Boosting 2404
+  Round 0
+     err: 3978.277225 (==3978.277225) time: [0.003 14.508 0.006    14.517000]
+     sset: 0x100 a: 1.559784 (==1.559784) b: -0.922747 (==-0.922747) rect: [-63 -42 - 91 70] thres: 0.043972
+  Round 1
+     err: 4276.685643 (==4276.685643) time: [0.003 15.746 0.006    15.755000]
+     sset: 0x1 a: -1.453139 (==-1.453139) b: 0.889703 (==0.889703) rect: [-77 -91 - 77 77] thres: 0.007827
+  Round 2
+     err: 3311.993003 (==3311.993003) time: [0.004 15.939 0.007    15.950000]
+     sset: 0x41000 a: 1.774658 (==1.774658) b: -0.984572 (==-0.984572) rect: [-63 -98 - 112 84] thres: 0.036543
+  Round 3
+     err: 3582.224000 (==3582.224000) time: [0.004 17.069 0.005    17.078000]
+     sset: 0x100 a: -1.320709 (==-1.320709) b: 0.320709 (==0.320709) rect: [-49 -91 - 70 91] thres: 0.000400
+  Round 4
+     err: 3168.054860 (==3168.054860) time: [0.004 16.517 0.006    16.527000]
+     sset: 0x41000 a: 1.497851 (==1.497851) b: -0.993298 (==-0.993298) rect: [-98 -98 - 98 98] thres: 0.000130
+./execute.sh: line 16: int:: command not found

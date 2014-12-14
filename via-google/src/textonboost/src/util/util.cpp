@@ -75,7 +75,7 @@ void loadMSRC(QVector< ColorImage >& images, QVector< LabelImage >& annotations,
 }
 
 QVector< QString > listVOC2010( int type ){
-	QString base_dir = VOC2010_DIRECTORY;
+	QString base_dir = VOC2010_DIRECTORY.c_str();
 	QVector< QString > names;
 	int types[] = {TRAIN, VALID, TEST};
 	const char * files[] = {VOC2010_TRAIN_FILE, VOC2010_VALID_FILE, VOC2010_TEST_FILE};

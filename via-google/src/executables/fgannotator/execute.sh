@@ -32,7 +32,7 @@ do
 		if [[ -f "$google_unaries_dir/$singlename.unary" ]]; then
 			#in debug
 			echo "Annotating $filename"
-			# echo "$fg_annotator_path VOC 21 ${objid[$c]} $dpm_img_folder/$singlename.jpg  $google_unaries_dir/$singlename.unary $google_png_dir/$singlename.png"
+			echo "$fg_annotator_path VOC 21 ${objid[$c]} $dpm_img_folder/$singlename.jpg  $google_unaries_dir/$singlename.unary $google_png_dir/$singlename.png"
 			`$fg_annotator_path VOC 21 ${objid[$c]} $dpm_img_folder/$singlename.jpg $google_unaries_dir/$singlename.unary $google_png_dir/$singlename.png`
 		fi
 	fi

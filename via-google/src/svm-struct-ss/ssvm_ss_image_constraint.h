@@ -13,13 +13,14 @@
 #include <QImage>
 #include <QtGlobal>
 #include <opengm/graphicalmodel/graphicalmodel.hxx>
+#include "../textonboost/src/settings.h"
 
 namespace ssvm_ss
 {
 namespace image_constraint
 {
-const size_t height = 100;
-const size_t width = 100;
+const size_t height = IMAGE_MAX_LENGTH;
+const size_t width = IMAGE_MAX_LENGTH;
 const size_t n_pixel = width *height;
 const size_t n_label = 21;
 const size_t neighbour_size = 2;

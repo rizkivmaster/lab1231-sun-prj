@@ -1,0 +1,40 @@
+
+Predictor path: /home/rizkivmaster/ws/lab1231-sun-prj/via-google/build/src/textonboost/src/predictor
+Google Unaries Dir: /home/rizkivmaster/ws/results/11584/unaries
+Google Training List: /home/rizkivmaster/ws/results/11584/google_predict
+DPM Image folder: /home/rizkivmaster/ws/datasets/dummy_google/JPEGImages
+Images list: /home/rizkivmaster/ws/datasets/dummy_google/google_object
+Normal Param: /home/rizkivmaster/ws/results/11584/init_param
+Quota per class: 1
+##################################
+rm: cannot remove `/home/rizkivmaster/ws/results/11584/google_predict': No such file or directory
+Image Size: 3
+aeroplane0001
+bicycle0001
+car0001
+WELCOME TO OUR WORLD. GET HIGH!
+Hello
+Loading the database
+Generating unaries for first 100th images
+Converting to Lab
+Loading Parameters of Feature 0
+Textonizing
+Cumulating Parameters of Feature 0
+Loading Parameters of Feature 1
+Textonizing
+Cumulating Parameters of Feature 1
+Loading Parameters of Feature 2
+Textonizing
+Cumulating Parameters of Feature 2
+Loading Parameters of Feature 3
+Textonizing
+Cumulating Parameters of Feature 3
+Evaluating
+Doing Image 0
+Doing Image 2
+Doing Image 1
+Classification time 21.000000 90.000000
+Classification time 18.000000 83.000000
+Classification time 33.000000 120.000000
+Successfully produced unaries for first 100th images
+ALL FINISHED, HAVE A NICE DAY BABY!

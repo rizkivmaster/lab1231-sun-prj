@@ -1,0 +1,46 @@
+
+Trainer path: /home/rizkivmaster/ws/lab1231-sun-prj/via-google/build/src/textonboost/src/trainer
+Target param folder: /home/rizkivmaster/ws/results/11584/improved_param
+Google Image-Object linker: /home/rizkivmaster/ws/datasets/dummy_google/google_object
+DPM Image folder: /home/rizkivmaster/ws/datasets/dummy_google/JPEGImages
+Google PNG folder: /home/rizkivmaster/ws/results/11584/png
+VOC training folder: /home/rizkivmaster/ws/datasets/dummy_voc_2010/JPEGImages
+VOC PNG folder: /home/rizkivmaster/ws/datasets/dummy_voc_2010/SegmentationClass
+VOC init train list: /home/rizkivmaster/ws/results/11584/init_train_list
+Combined train list: /home/rizkivmaster/ws/results/11584/combined_train_list
+##################################
+START TRAINING IMPROVED MODEL
+WELCOME TO OUR WORLD. GET HIGH!
+Hello
+Loading the database
+Generating unaries for first 100th images
+Converting to Lab
+Loading Parameters of Feature 0
+Textonizing
+Cumulating Parameters of Feature 0
+Loading Parameters of Feature 1
+Textonizing
+Cumulating Parameters of Feature 1
+Loading Parameters of Feature 2
+Textonizing
+Cumulating Parameters of Feature 2
+Loading Parameters of Feature 3
+Textonizing
+Cumulating Parameters of Feature 3
+Evaluating
+Doing Image 0
+Doing Image 1
+Doing Image 3
+Doing Image 2
+Classification time 27273.000000 108627.000000
+Doing Image 4
+Classification time 34461.000000 127466.000000
+Doing Image 5
+Classification time 56970.000000 189556.000000
+Classification time 60774.000000 201593.000000
+Classification time 49613.000000 164471.000000
+Classification time 47951.000000 159556.000000
+Successfully produced unaries for first 100th images
+ALL FINISHED, HAVE A NICE DAY BABY!
+Failed to open file '/home/rizkivmaster/ws/results/11584/unaries/aeroplane0001.c_unary'!
+./execute.sh: line 52: Reading: command not found

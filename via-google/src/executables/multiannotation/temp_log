@@ -1,0 +1,10 @@
+
+SVM classify path: /home/rizkivmaster/ws/lab1231-sun-prj/via-google/build/src/svm-struct-ss/svm_struct/do_classify
+Test List file: /home/rizkivmaster/ws/datasets/dummy_voc_2010/split/Test.txt
+SVM model path: /home/rizkivmaster/ws/results/11584/svm_model
+SVM output path: /home/rizkivmaster/ws/results/11584/svm_output
+##################################
+START ANNOTATION
+/home/rizkivmaster/ws/results/11584/svm_model: No such file or directory
+./execute.sh: line 10: Reading: command not found
+DONE MULTICLASS ANNOTATION
