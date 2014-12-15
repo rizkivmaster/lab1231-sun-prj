@@ -168,11 +168,11 @@ void set_1st_order(const cv::Mat img_mat, const cv::Mat_<double> saliency_mat, P
             const size_t shape[] = {n_label};
             opengm::ExplicitFunction<float> energy(shape, shape + 1);
 
-            energy(object_label) = -unary_mat(x, y, object_label);
+            
 
             for (size_t i = 0; i < n_label; i++)
             {
-                
+                energy(i) = -unary_mat(x, y, i);
 
                 if (i != object_label)
                 {

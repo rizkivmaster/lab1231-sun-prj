@@ -1,6 +1,12 @@
 
-SVM learner path: /home/rizkivmaster/ws/lab1231-sun-prj/via-google/build/src/svm-struct-ss/svm_struct/do_learn
-SVM model path: /home/rizkivmaster/ws/results/11584/svm_model
-Combined train list: /home/rizkivmaster/ws/results/11584/combined_train_list
+SVM learner path: /home/rizkivmaster/ws/rizki/via-google/build/src/svm-struct-ss/svm_struct/do_learn
+SVM model path: /home/rizkivmaster/ws/results/14736/svm_model
+Init train list: /home/rizkivmaster/ws/results/14736/init_train_list
+VOC Image Folder: /home/rizkivmaster/ws/datasets/voc2010/JPEGImages
+Target unaries folder: /home/rizkivmaster/ws/results/14736/unaries
+Combined train list: /home/rizkivmaster/ws/results/14736/combined_train_list
 ##################################
 START TRAINING SVM
+/home/rizkivmaster/ws/rizki/via-google/build/src/svm-struct-ss/svm_struct/do_learn -w 2 -c 1 -e 100 /home/rizkivmaster/ws/results/14736/combined_train_list /home/rizkivmaster/ws/results/14736/svm_model
+do_learn: /home/rizkivmaster/ws/rizki/via-google/src/svm-struct-ss/svm_struct_api.cpp:492: SVECTOR* psi(PATTERN, LABEL, STRUCTMODEL*, STRUCT_LEARN_PARM*): Assertion `(windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size' failed.
+./execute.sh: line 51: Reading: command not found

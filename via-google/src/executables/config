@@ -2,17 +2,17 @@
 #LINKER
 
 #main folder
-main_root="/home/rizkivmaster/ws/lab1231-sun-prj/via-google"
+main_root="/home/rizkivmaster/ws/rizki/via-google"
 #root dari folder google images
-google_root="/home/rizkivmaster/ws/datasets/dummy_google"
+google_root="/home/rizkivmaster/ws/datasets/google-sun"
 #jumlah gambar yang akan didownload
 google_download_size=1
 #jumlah gambar yang akan digunakan per kelas
-google_sampling_size="1"
+google_sampling_size="10"
 #VOC root
-voc_root="/home/rizkivmaster/ws/datasets/dummy_voc_2010"
+voc_root="/home/rizkivmaster/ws/datasets/minivoc2010"
 #jumlah gambar VOC yang akan dipakai untuk training
-voc_train_size=3
+voc_train_size=600
 #maximum width and height
 image_length_max=250
 #experiment folder

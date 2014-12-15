@@ -46,21 +46,21 @@ date +"%m-%d-%y %T" >> $logpath
 
 #FROM HERE
 
-echo "START GENERATING GOOGLE UNARY" >> $logpath
-date +"%m-%d-%y %T" >> $logpath
+# echo "START GENERATING GOOGLE UNARY" >> $logpath
+# date +"%m-%d-%y %T" >> $logpath
 
-cd google-unary-generator
-./execute.sh 2>&1 | tee temp_log
-cat temp_log >> $logpath
-cd ..
+# cd google-unary-generator
+# ./execute.sh 2>&1 | tee temp_log
+# cat temp_log >> $logpath
+# cd ..
 
-echo "START F/G SEGMENTATION" >> $logpath
-date +"%m-%d-%y %T" >> $logpath
+# echo "START F/G SEGMENTATION" >> $logpath
+# date +"%m-%d-%y %T" >> $logpath
 
-cd fgannotator
-./execute.sh 2>&1 | tee temp_log
-cat temp_log >> $logpath
-cd ..
+# cd fgannotator
+# ./execute.sh 2>&1 | tee temp_log
+# cat temp_log >> $logpath
+# cd ..
 
 
 # echo "START IMPROVING MODEL" >> $logpath
@@ -79,21 +79,21 @@ cd svm-learning
 cat temp_log >> $logpath
 cd ..
 
-echo "START TEST UNARY GENERATION" >> $logpath
-date +"%m-%d-%y %T" >> $logpath
+# echo "START TEST UNARY GENERATION" >> $logpath
+# date +"%m-%d-%y %T" >> $logpath
 
-cd test-unary-generator
-./execute.sh 2>&1 | tee temp_log
-cat temp_log >> $logpath
-cd ..
+# cd test-unary-generator
+# ./execute.sh 2>&1 | tee temp_log
+# cat temp_log >> $logpath
+# cd ..
 
-echo "START TESTSET ANNOTATION" >> $logpath
-date +"%m-%d-%y %T" >> $logpath
+# echo "START TESTSET ANNOTATION" >> $logpath
+# date +"%m-%d-%y %T" >> $logpath
 
-cd multiannotation
-./execute.sh 2>&1 | tee temp_log
-cat temp_log >> $logpath
-cd ..
+# cd multiannotation
+# ./execute.sh 2>&1 | tee temp_log
+# cat temp_log >> $logpath
+# cd ..
 
 
 # echo "START EVALUATION" >> $logpath

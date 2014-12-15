@@ -1,5 +1,6 @@
 #include <shotton/shotton.h>
 #include <math.h>
+#include "../textonboost/src/settings.h"
 #define __(x,y) printf("%s %d\n",x,y);
 using namespace std;
 namespace lab1231_sun_prj {
@@ -7,7 +8,7 @@ namespace shotton {
 
 void save_image(char* filename, Eigen::MatrixXi m)
 {
-    QString colorfile = "VOC2010.ct";
+    QString colorfile = VOC2010_COLOR_PATH.c_str();
     QVector<QRgb> colorTable;
     QFile file(colorfile);
     if (!file.open(QFile::ReadOnly))

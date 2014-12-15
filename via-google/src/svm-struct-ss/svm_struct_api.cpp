@@ -489,6 +489,7 @@ SVECTOR     *psi(PATTERN x, LABEL y, STRUCTMODEL *sm,
         for (size_t yy = 0; yy < x.height; yy++)
         {
             //reduce dimensions
+          if(!((windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size))printf("winoffsetx %d winoffsety %d xx %d yy %d winwidth %d imagemiddlex %d imagemiddley %d path %s\n",windowoffsetx,windowoffsety,xx,yy,windowwidth,imagemiddlex,imagemiddley,x.image_path);
             assert((windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size);
             fvec->words[(windowoffsetx + xx) + (windowoffsety + yy)*windowwidth].weight = unary_matrix(xx, yy, y.annotation_matrix(yy, xx)); //make sure it is potential invers
         }
