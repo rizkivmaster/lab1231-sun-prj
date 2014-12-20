@@ -10,7 +10,7 @@ google_download_size=1
 #jumlah gambar yang akan digunakan per kelas
 google_sampling_size="10"
 #VOC root
-voc_root="/home/rizkivmaster/ws/datasets/minivoc2010"
+voc_root="/home/rizkivmaster/ws/datasets/smallVOC2010"
 #jumlah gambar VOC yang akan dipakai untuk training
 voc_train_size=600
 #maximum width and height
@@ -85,14 +85,15 @@ combined_train_list="$current_exp/combined_train_list"
 
 init_train_path="$current_exp/init_train_list"
 normal_param="$current_exp/init_param"
-improved_param="$current_exp/improved_param"
+improved_param="$current_exp/init_param"
 google_test_png_dir="$current_exp/test_png"
 google_test_csv_dir="$current_exp/test_csv"
 #ok
 google_test_unary_path="$current_exp/unaries"
 normal_test_png_dir="$current_exp/normal_png"
 normal_test_csv_dir="$current_exp/normal_csv"
-normal_test_unary_path="$current_exp/normal_unaries"
+#debug
+normal_test_unary_path="$current_exp/unaries"
 svm_model_path="$current_exp/svm_model"
 svm_output_path="$current_exp/svm_output"
 

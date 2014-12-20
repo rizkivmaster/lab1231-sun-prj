@@ -12,8 +12,8 @@ echo "Evaluator: $evaluator_path"
 echo "##################################"
 
 #create normal unary
-echo "START TO GENERATE UNARIES FOR NORMAL TEST IMAGES"
-`$predict_bin $normal_param $voc_test_list $voc_img_folder  $normal_test_unary_path`
+#echo "START TO GENERATE UNARIES FOR NORMAL TEST IMAGES"
+#`$predict_bin $normal_param $voc_test_list $voc_img_folder  $normal_test_unary_path`
 
 #create multiclass segmentation
 `cut -d , -f 1 $voc_test_list > imgname_tmp`

@@ -71,21 +71,21 @@ date +"%m-%d-%y %T" >> $logpath
 # cat temp_log >> $logpath
 # cd ..
 
-echo "START SVM LEARNER" >> $logpath
-date +"%m-%d-%y %T" >> $logpath
+#echo "START SVM LEARNER" >> $logpath
+#date +"%m-%d-%y %T" >> $logpath
 
-cd svm-learning
-./execute.sh 2>&1 | tee temp_log
-cat temp_log >> $logpath
-cd ..
+#cd svm-learning
+#./execute.sh 2>&1 | tee temp_log
+#cat temp_log >> $logpath
+#cd ..
 
-# echo "START TEST UNARY GENERATION" >> $logpath
-# date +"%m-%d-%y %T" >> $logpath
+#echo "START TEST UNARY GENERATION" >> $logpath
+#date +"%m-%d-%y %T" >> $logpath
 
-# cd test-unary-generator
-# ./execute.sh 2>&1 | tee temp_log
-# cat temp_log >> $logpath
-# cd ..
+#cd test-unary-generator
+#./execute.sh 2>&1 | tee temp_log
+#cat temp_log >> $logpath
+#cd ..
 
 # echo "START TESTSET ANNOTATION" >> $logpath
 # date +"%m-%d-%y %T" >> $logpath
@@ -103,13 +103,13 @@ cd ..
 # ./execute.sh
 # cd ..
 
-# echo "START BASELINE PREDICTION" >> $logpath
-# date +"%m-%d-%y %T" >> $logpath
+echo "START BASELINE PREDICTION" >> $logpath
+ date +"%m-%d-%y %T" >> $logpath
 
-# cd baseline-prediction
-# ./execute.sh 2>&1 | tee temp_log
-# cat temp_log >> $logpath
-# cd ..
+ cd baseline-prediction
+ ./execute.sh 2>&1 | tee temp_log
+ cat temp_log >> $logpath
+ cd ..
 
 
 cd ../..

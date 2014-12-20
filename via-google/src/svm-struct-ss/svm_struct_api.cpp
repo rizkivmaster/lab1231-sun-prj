@@ -120,6 +120,7 @@ SAMPLE      read_struct_examples(char *file, STRUCT_LEARN_PARM *sparm)
             strcpy(examples[exampleIndex].x.unary_path, unary_path.c_str());
             strcpy(examples[exampleIndex].x.dumping_path, dumping_path.c_str());
             strcpy(examples[exampleIndex].y.dumping_path, dumping_path.c_str());
+            
             examples[exampleIndex].y.annotation_matrix = annotation_matrix;
             examples[exampleIndex].y.n_label = ssvm_ss::image_constraint::n_label;
             examples[exampleIndex].x.bypass = annotation_matrix;
@@ -251,9 +252,6 @@ void infer(PATTERN x, LABEL &y, STRUCTMODEL *sm)
 
     size_t n_label = y.n_label;
     y.annotation_matrix = lab1231_sun_prj::shotton::annotate(n_label, image_matrix, unary_matrix, unary_weights, pair_weights);
-
-
-
 
     // printf("Saving to %s\n", x.dumping_path);
     // y.png_matrix.save(x.dumping_path,"png",0);
@@ -478,6 +476,7 @@ SVECTOR     *psi(PATTERN x, LABEL y, STRUCTMODEL *sm,
     ProbImage unary_matrix;
     checkIfExists(x.unary_path);
     unary_matrix.load(x.unary_path);
+    printf("width %d height %d\n",unary_matrix.width(),unary_matrix.height());
 
     cv::Mat image_matrix;
     checkIfExists(x.image_path);

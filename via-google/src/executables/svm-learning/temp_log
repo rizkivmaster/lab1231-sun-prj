@@ -2,11 +2,1232 @@
 SVM learner path: /home/rizkivmaster/ws/rizki/via-google/build/src/svm-struct-ss/svm_struct/do_learn
 SVM model path: /home/rizkivmaster/ws/results/14736/svm_model
 Init train list: /home/rizkivmaster/ws/results/14736/init_train_list
-VOC Image Folder: /home/rizkivmaster/ws/datasets/voc2010/JPEGImages
+VOC Image Folder: /home/rizkivmaster/ws/datasets/smallVOC2010/JPEGImages
 Target unaries folder: /home/rizkivmaster/ws/results/14736/unaries
 Combined train list: /home/rizkivmaster/ws/results/14736/combined_train_list
 ##################################
+GENERATING TRAINING UNARIES
+WELCOME TO OUR WORLD. GET HIGH!
+Hello
+Loading the database
+Generating unaries for first 1000th images
+Converting to Lab
+Loading Parameters of Feature 0
+Textonizing
+Cumulating Parameters of Feature 0
+Loading Parameters of Feature 1
+Textonizing
+Cumulating Parameters of Feature 1
+Loading Parameters of Feature 2
+Textonizing
+Cumulating Parameters of Feature 2
+Loading Parameters of Feature 3
+Textonizing
+Cumulating Parameters of Feature 3
+Evaluating
+Doing Image 0
+Doing Image 75
+Doing Image 225
+Doing Image 300
+Doing Image 562
+Doing Image 150
+Doing Image 450
+Doing Image 525
+Classification time 18319.000000 51575.000000
+Doing Image 151
+Classification time 18550.000000 52483.000000
+Doing Image 226
+Classification time 18876.000000 53018.000000
+Doing Image 451
+Classification time 20041.000000 56391.000000
+Doing Image 563
+Classification time 22214.000000 58014.000000
+Doing Image 1
+Classification time 21392.000000 59168.000000
+Doing Image 526
+Classification time 21406.000000 59378.000000
+Doing Image 301
+Classification time 22122.000000 59269.000000
+Doing Image 76
+Classification time 18920.000000 52255.000000
+Doing Image 152
+Classification time 18822.000000 53599.000000
+Doing Image 452
+Classification time 21085.000000 58565.000000
+Doing Image 227
+Classification time 21070.000000 58728.000000
+Doing Image 564
+Classification time 20149.000000 56845.000000
+Doing Image 302
+Classification time 21162.000000 57794.000000
+Doing Image 2
+Classification time 21359.000000 59360.000000
+Doing Image 527
+Classification time 21911.000000 60801.000000
+Doing Image 77
+Classification time 20117.000000 56548.000000
+Classification time 18508.000000 51878.000000
+Doing Image 453
+Doing Image 228
+Classification time 19121.000000 53430.000000
+Doing Image 565
+Classification time 23913.000000 65424.000000
+Doing Image 153
+Classification time 21083.000000 58089.000000
+Doing Image 3
+Classification time 21388.000000 59403.000000
+Doing Image 303
+Classification time 21025.000000 58320.000000
+Doing Image 528
+Classification time 22085.000000 61295.000000
+Doing Image 78
+Classification time 19434.000000 52682.000000
+Doing Image 454
+Classification time 21258.000000 59645.000000
+Doing Image 229
+Classification time 21530.000000 58577.000000
+Doing Image 566
+Classification time 20874.000000 57570.000000
+Doing Image 4
+Classification time 20942.000000 57504.000000
+Doing Image 304
+Classification time 18824.000000 52574.000000
+Doing Image 79
+Classification time 23876.000000 65104.000000
+Doing Image 154
+Classification time 21257.000000 59421.000000
+Doing Image 529
+Classification time 18727.000000 51290.000000
+Doing Image 455
+Classification time 21733.000000 58999.000000
+Doing Image 230
+Classification time 21096.000000 58345.000000
+Doing Image 567
+Classification time 19671.000000 53016.000000
+Doing Image 530
+Classification time 20903.000000 57857.000000
+Doing Image 305
+Classification time 21286.000000 59148.000000
+Doing Image 80
+Classification time 21404.000000 59512.000000
+Doing Image 155
+Classification time 23545.000000 63205.000000
+Doing Image 5
+Classification time 18058.000000 52115.000000
+Doing Image 456
+Classification time 20719.000000 57629.000000
+Doing Image 231
+Classification time 20748.000000 56929.000000
+Doing Image 568
+Classification time 18357.000000 52588.000000
+Doing Image 81
+Classification time 19190.000000 53680.000000
+Classification time 18054.000000 51531.000000
+Doing Image 156
+Doing Image 6
+Classification time 21255.000000 59369.000000
+Classification time 21329.000000 57511.000000
+Doing Image 531
+Doing Image 306
+Classification time 21427.000000 59907.000000
+Doing Image 457
+Classification time 19164.000000 52005.000000
+Doing Image 569
+Classification time 21213.000000 59230.000000
+Doing Image 232
+Classification time 17857.000000 50866.000000
+Doing Image 7
+Classification time 18517.000000 51324.000000
+Doing Image 307
+Classification time 19172.000000 52443.000000
+Doing Image 532
+Classification time 21647.000000 60252.000000
+Doing Image 82
+Classification time 21526.000000 59881.000000
+Doing Image 157
+Classification time 21550.000000 60007.000000
+Doing Image 458
+Classification time 16952.000000 48268.000000
+Doing Image 233
+Classification time 18351.000000 51342.000000
+Doing Image 8
+Classification time 20051.000000 54930.000000
+Doing Image 570
+Classification time 21486.000000 58403.000000
+Doing Image 308
+Classification time 21223.000000 59147.000000
+Doing Image 533
+Classification time 21039.000000 58940.000000
+Doing Image 83
+Classification time 25177.000000 67874.000000
+Doing Image 158
+Classification time 21611.000000 60112.000000
+Doing Image 459
+Classification time 17894.000000 51159.000000
+Doing Image 9
+Classification time 21467.000000 59544.000000
+Doing Image 234
+Classification time 21067.000000 57776.000000
+Doing Image 571
+Classification time 18561.000000 52434.000000
+Doing Image 534
+Classification time 18356.000000 52026.000000
+Doing Image 84
+Classification time 22110.000000 60170.000000
+Doing Image 309
+Classification time 21641.000000 59382.000000
+Doing Image 159
+Classification time 21544.000000 59027.000000
+Doing Image 460
+Classification time 20971.000000 57616.000000
+Doing Image 10
+Classification time 19486.000000 53180.000000
+Doing Image 235
+Classification time 18720.000000 51163.000000
+Doing Image 572
+Classification time 18501.000000 52154.000000
+Doing Image 535
+Classification time 18051.000000 51912.000000
+Doing Image 85
+Classification time 19030.000000 54536.000000
+Doing Image 310
+Classification time 18350.000000 51399.000000
+Doing Image 160
+Classification time 20887.000000 57321.000000
+Doing Image 11
+Classification time 20937.000000 57312.000000
+Doing Image 573
+Classification time 21619.000000 59322.000000
+Doing Image 461
+Classification time 21096.000000 58911.000000
+Doing Image 236
+Classification time 21286.000000 59262.000000
+Doing Image 536
+Classification time 21394.000000 59457.000000
+Classification time 19086.000000 53807.000000
+Doing Image 86
+Doing Image 311
+Classification time 21152.000000 58819.000000
+Doing Image 161
+Classification time 18600.000000 51699.000000
+Doing Image 574
+Classification time 18243.000000 52673.000000
+Doing Image 462
+Classification time 20827.000000 57037.000000
+Doing Image 237
+Classification time 18528.000000 52487.000000
+Doing Image 537
+Classification time 23577.000000 62543.000000
+Doing Image 12
+Classification time 18604.000000 53773.000000
+Doing Image 87
+Classification time 27305.000000 72559.000000
+Doing Image 312
+Classification time 21030.000000 58494.000000
+Doing Image 162
+Classification time 19090.000000 54684.000000
+Doing Image 575
+Classification time 16714.000000 48704.000000
+Doing Image 238
+Classification time 21171.000000 58804.000000
+Doing Image 463
+Classification time 18335.000000 51293.000000
+Doing Image 13
+Classification time 18993.000000 53310.000000
+Doing Image 88
+Classification time 21518.000000 59400.000000
+Doing Image 538
+Classification time 8153.000000 26692.000000
+Doing Image 239
+Classification time 19234.000000 52512.000000
+Doing Image 313
+Classification time 18703.000000 53603.000000
+Doing Image 163
+Classification time 18683.000000 52417.000000
+Doing Image 576
+Classification time 14462.000000 43782.000000
+Doing Image 89
+Classification time 21413.000000 59200.000000
+Doing Image 464
+Classification time 21051.000000 58700.000000
+Doing Image 539
+Classification time 29998.000000 76620.000000
+Doing Image 14
+Classification time 21677.000000 60134.000000
+Doing Image 240
+Classification time 21234.000000 58653.000000
+Doing Image 314
+Classification time 21137.000000 59322.000000
+Doing Image 164
+Classification time 19643.000000 55322.000000
+Doing Image 577
+Classification time 20950.000000 58254.000000
+Doing Image 90
+Classification time 18847.000000 52766.000000
+Doing Image 465
+Classification time 21503.000000 58956.000000
+Doing Image 540
+Classification time 13696.000000 41437.000000
+Doing Image 165
+Classification time 20946.000000 57202.000000
+Doing Image 15
+Classification time 21447.000000 59108.000000
+Doing Image 315
+Classification time 23172.000000 62944.000000
+Doing Image 241
+Classification time 18718.000000 52338.000000
+Doing Image 578
+Classification time 22677.000000 62377.000000
+Doing Image 91
+Classification time 18456.000000 51750.000000
+Doing Image 541
+Classification time 21053.000000 58933.000000
+Doing Image 166
+Classification time 30135.000000 78099.000000
+Doing Image 466
+Classification time 20848.000000 57112.000000
+Doing Image 16
+Classification time 18871.000000 52519.000000
+Doing Image 316
+Classification time 21722.000000 59174.000000
+Doing Image 242
+Classification time 18886.000000 52535.000000
+Doing Image 579
+Classification time 21531.000000 58639.000000
+Doing Image 92
+Classification time 20956.000000 58316.000000
+Doing Image 542
+Classification time 21188.000000 59339.000000
+Doing Image 167
+Classification time 18821.000000 52480.000000
+Doing Image 317
+Classification time 21128.000000 57902.000000
+Doing Image 17
+Classification time 22923.000000 63046.000000
+Doing Image 467
+Classification time 21157.000000 58971.000000
+Doing Image 243
+Classification time 21016.000000 58904.000000
+Doing Image 580
+Classification time 18316.000000 51716.000000
+Doing Image 93
+Classification time 7046.000000 24250.000000
+Doing Image 244
+Classification time 19319.000000 52858.000000
+Doing Image 543
+Classification time 14458.000000 43810.000000
+Doing Image 468
+Classification time 21027.000000 57437.000000
+Doing Image 18
+Classification time 23083.000000 62994.000000
+Doing Image 318
+Classification time 21170.000000 58919.000000
+Doing Image 581
+Classification time 30738.000000 79745.000000
+Doing Image 168
+Classification time 21023.000000 58594.000000
+Doing Image 94
+Classification time 21581.000000 59257.000000
+Doing Image 245
+Classification time 22268.000000 61375.000000
+Doing Image 544
+Classification time 21260.000000 57923.000000
+Doing Image 469
+Classification time 21297.000000 58215.000000
+Doing Image 19
+Classification time 21256.000000 58889.000000
+Doing Image 319
+Classification time 21426.000000 58609.000000
+Doing Image 582
+Classification time 21258.000000 59231.000000
+Doing Image 169
+Classification time 21776.000000 59316.000000
+Doing Image 95
+Classification time 16163.000000 47012.000000
+Doing Image 470
+Classification time 21816.000000 59528.000000
+Doing Image 545
+Classification time 16895.000000 47663.000000
+Doing Image 320
+Classification time 30528.000000 78947.000000
+Doing Image 246
+Classification time 20877.000000 57453.000000
+Doing Image 20
+Classification time 14859.000000 43743.000000
+Doing Image 170
+Classification time 21210.000000 59278.000000
+Doing Image 583
+Classification time 21370.000000 59667.000000
+Doing Image 96
+Classification time 14243.000000 42102.000000
+Doing Image 321
+Classification time 21331.000000 59522.000000
+Doing Image 471
+Classification time 19215.000000 52427.000000
+Doing Image 546
+Classification time 21118.000000 58678.000000
+Doing Image 247
+Classification time 21439.000000 58500.000000
+Doing Image 21
+Classification time 21314.000000 58877.000000
+Doing Image 171
+Classification time 21085.000000 58679.000000
+Doing Image 584
+Classification time 18209.000000 52569.000000
+Doing Image 97
+Classification time 18935.000000 52091.000000
+Doing Image 322
+Classification time 20999.000000 58735.000000
+Doing Image 472
+Classification time 21291.000000 59514.000000
+Doing Image 547
+Classification time 21162.000000 59105.000000
+Doing Image 248
+Classification time 21397.000000 58546.000000
+Doing Image 172
+Classification time 19594.000000 54541.000000
+Doing Image 585
+Classification time 27450.000000 70924.000000
+Doing Image 22
+Classification time 21033.000000 59044.000000
+Doing Image 98
+Classification time 21258.000000 59119.000000
+Doing Image 323
+Classification time 18753.000000 53010.000000
+Doing Image 548
+Classification time 30257.000000 78528.000000
+Doing Image 473
+Classification time 21293.000000 58805.000000
+Doing Image 249
+Classification time 21151.000000 58513.000000
+Doing Image 173
+Classification time 18210.000000 50885.000000
+Doing Image 23
+Classification time 21287.000000 59152.000000
+Doing Image 586
+Classification time 18463.000000 51979.000000
+Doing Image 549
+Classification time 21063.000000 58756.000000
+Doing Image 99
+Classification time 22090.000000 60374.000000
+Doing Image 324
+Classification time 14663.000000 44271.000000
+Doing Image 250
+Classification time 21129.000000 58687.000000
+Classification time 18405.000000 52681.000000
+Doing Image 474
+Doing Image 174
+Classification time 20887.000000 57325.000000
+Doing Image 24
+Classification time 21120.000000 58558.000000
+Doing Image 587
+Classification time 18642.000000 53446.000000
+Doing Image 100
+Classification time 22547.000000 61488.000000
+Doing Image 550
+Classification time 21516.000000 59665.000000
+Doing Image 325
+Classification time 21380.000000 59562.000000
+Doing Image 251
+Classification time 19667.000000 52774.000000
+Doing Image 175
+Classification time 21642.000000 59747.000000
+Doing Image 475
+Classification time 14933.000000 43646.000000
+Doing Image 101
+Classification time 21565.000000 59002.000000
+Doing Image 25
+Classification time 21734.000000 60245.000000
+Doing Image 588
+Classification time 21415.000000 59157.000000
+Doing Image 551
+Classification time 21605.000000 59786.000000
+Doing Image 326
+Classification time 19125.000000 53215.000000
+Doing Image 252
+Classification time 14526.000000 43957.000000
+Doing Image 476
+Classification time 22261.000000 61593.000000
+Doing Image 176
+Classification time 19414.000000 54621.000000
+Doing Image 102
+Classification time 22297.000000 59964.000000
+Doing Image 26
+Classification time 22893.000000 61857.000000
+Doing Image 589
+Classification time 21011.000000 58107.000000
+Doing Image 327
+Classification time 23632.000000 63181.000000
+Doing Image 552
+Classification time 21280.000000 57117.000000
+Doing Image 253
+Classification time 19773.000000 55218.000000
+Doing Image 477
+Classification time 25299.000000 64706.000000
+Doing Image 177
+Classification time 20893.000000 56413.000000
+Doing Image 27
+Classification time 24675.000000 65320.000000
+Doing Image 103
+Classification time 20866.000000 55928.000000
+Doing Image 590
+Classification time 20852.000000 56198.000000
+Doing Image 328
+Classification time 19929.000000 54639.000000
+Doing Image 553
+Classification time 20268.000000 54986.000000
+Doing Image 254
+Classification time 22949.000000 62441.000000
+Doing Image 478
+Classification time 7488.000000 27951.000000
+Doing Image 554
+Classification time 18628.000000 52692.000000
+Doing Image 28
+Classification time 21680.000000 59622.000000
+Doing Image 178
+Classification time 22078.000000 61158.000000
+Doing Image 104
+Classification time 21877.000000 60309.000000
+Doing Image 591
+Classification time 14263.000000 44121.000000
+Doing Image 479
+Classification time 21890.000000 60447.000000
+Doing Image 329
+Classification time 21917.000000 60480.000000
+Doing Image 255
+Classification time 19436.000000 53956.000000
+Doing Image 555
+Classification time 22381.000000 60565.000000
+Doing Image 29
+Classification time 19011.000000 53604.000000
+Doing Image 105
+Classification time 24504.000000 64360.000000
+Doing Image 179
+Classification time 19677.000000 54065.000000
+Doing Image 592
+Classification time 13785.000000 39861.000000
+Doing Image 256
+Classification time 22700.000000 61971.000000
+Doing Image 480
+Classification time 22521.000000 61054.000000
+Doing Image 330
+Classification time 16973.000000 48918.000000
+Doing Image 30
+Classification time 23110.000000 62156.000000
+Doing Image 556
+Classification time 19464.000000 54694.000000
+Doing Image 106
+Classification time 19902.000000 54394.000000
+Doing Image 593
+Classification time 19877.000000 54582.000000
+Doing Image 257
+Classification time 23441.000000 62608.000000
+Doing Image 180
+Classification time 20296.000000 54964.000000
+Doing Image 481
+Classification time 23207.000000 61877.000000
+Doing Image 331
+Classification time 19228.000000 53940.000000
+Doing Image 31
+Classification time 22591.000000 61713.000000
+Doing Image 557
+Classification time 22435.000000 61448.000000
+Doing Image 107
+Classification time 22389.000000 61470.000000
+Doing Image 594
+Classification time 14529.000000 44402.000000
+Doing Image 482
+Classification time 23205.000000 62098.000000
+Doing Image 258
+Classification time 22171.000000 60712.000000
+Doing Image 181
+Classification time 19184.000000 53174.000000
+Doing Image 332
+Classification time 21328.000000 58194.000000
+Doing Image 32
+Classification time 21807.000000 59864.000000
+Doing Image 558
+Classification time 21895.000000 60694.000000
+Doing Image 108
+Classification time 18807.000000 52058.000000
+Doing Image 182
+Classification time 21607.000000 59779.000000
+Doing Image 595
+Classification time 21636.000000 59667.000000
+Doing Image 483
+Classification time 21801.000000 60021.000000
+Doing Image 259
+Classification time 19439.000000 53715.000000
+Doing Image 333
+Classification time 21812.000000 59581.000000
+Doing Image 33
+Classification time 17147.000000 49009.000000
+Doing Image 596
+Classification time 19383.000000 53073.000000
+Doing Image 183
+Classification time 21790.000000 60258.000000
+Doing Image 109
+Classification time 23867.000000 64379.000000
+Doing Image 559
+Classification time 21951.000000 60864.000000
+Doing Image 484
+Classification time 22402.000000 60107.000000
+Doing Image 334
+Classification time 27420.000000 71854.000000
+Doing Image 260
+Classification time 22557.000000 59538.000000
+Doing Image 34
+Classification time 18970.000000 53130.000000
+Doing Image 560
+Classification time 21917.000000 60477.000000
+Doing Image 597
+Classification time 21685.000000 59708.000000
+Doing Image 110
+Classification time 22532.000000 61510.000000
+Doing Image 184
+Classification time 22440.000000 60215.000000
+Doing Image 485
+Classification time 19639.000000 54081.000000
+Doing Image 335
+Classification time 6253.000000 22516.000000
+Doing Image 111
+Classification time 22538.000000 60543.000000
+Doing Image 261
+Classification time 18861.000000 53141.000000
+Doing Image 35
+Classification time 19890.000000 54869.000000
+Doing Image 561
+Classification time 23074.000000 62972.000000
+Doing Image 598
+Classification time 22080.000000 61037.000000
+Doing Image 185
+Classification time 18753.000000 52368.000000
+Doing Image 336
+Classification time 22615.000000 61134.000000
+Doing Image 486
+Classification time 19733.000000 54200.000000
+Doing Image 112
+Classification time 19186.000000 53236.000000
+Doing Image 262
+Classification time 21526.000000 58710.000000
+Doing Image 36
+Classification time 19373.000000 53861.000000
+Doing Image 281
+Classification time 21740.000000 59933.000000
+Doing Image 599
+Classification time 21769.000000 60332.000000
+Classification time 19369.000000 53529.000000
+Doing Image 186
+Doing Image 337
+Classification time 21771.000000 59967.000000
+Doing Image 487
+Classification time 21549.000000 59748.000000
+Doing Image 113
+Classification time 21717.000000 60349.000000
+Doing Image 263
+Classification time 21680.000000 58754.000000
+Doing Image 37
+Classification time 21747.000000 59499.000000
+Doing Image 282
+Classification time 21367.000000 59121.000000
+Doing Image 290
+Classification time 21177.000000 59238.000000
+Doing Image 338
+Classification time 21396.000000 59414.000000
+Doing Image 187
+Classification time 18760.000000 53190.000000
+Doing Image 488
+Classification time 21285.000000 59021.000000
+Doing Image 114
+Classification time 21418.000000 59048.000000
+Doing Image 264
+Classification time 21205.000000 58114.000000
+Doing Image 38
+Classification time 18610.000000 52258.000000
+Doing Image 283
+Classification time 18851.000000 52690.000000
+Doing Image 339
+Classification time 21384.000000 59120.000000
+Doing Image 291
+Classification time 21532.000000 59540.000000
+Doing Image 188
+Classification time 21289.000000 59030.000000
+Doing Image 489
+Classification time 21238.000000 59176.000000
+Doing Image 115
+Classification time 9348.000000 31863.000000
+Doing Image 340
+Classification time 21324.000000 58180.000000
+Doing Image 39
+Classification time 26169.000000 69846.000000
+Doing Image 265
+Classification time 21447.000000 60295.000000
+Doing Image 284
+Classification time 18707.000000 53164.000000
+Doing Image 490
+Classification time 21718.000000 60216.000000
+Doing Image 292
+Classification time 23167.000000 62655.000000
+Doing Image 189
+Classification time 21905.000000 60096.000000
+Doing Image 116
+Classification time 16786.000000 48972.000000
+Doing Image 40
+Classification time 19095.000000 53258.000000
+Doing Image 266
+Classification time 21746.000000 60094.000000
+Doing Image 341
+Classification time 9631.000000 31119.000000
+Doing Image 491
+Classification time 18985.000000 53005.000000
+Doing Image 285
+Classification time 19733.000000 52645.000000
+Doing Image 293
+Classification time 22068.000000 60034.000000
+Doing Image 190
+Classification time 21859.000000 59309.000000
+Doing Image 117
+Classification time 21250.000000 58262.000000
+Doing Image 41
+Classification time 18715.000000 52483.000000
+Doing Image 286
+Classification time 21453.000000 59807.000000
+Doing Image 267
+Classification time 21737.000000 59924.000000
+Doing Image 492
+Classification time 8344.000000 27274.000000
+Doing Image 118
+Classification time 28790.000000 75466.000000
+Doing Image 342
+Classification time 19162.000000 53453.000000
+Doing Image 294
+Classification time 21374.000000 59527.000000
+Doing Image 191
+Classification time 18642.000000 52221.000000
+Doing Image 287
+Classification time 21495.000000 58763.000000
+Doing Image 42
+Classification time 21540.000000 58717.000000
+Doing Image 268
+Classification time 21174.000000 58892.000000
+Doing Image 493
+Classification time 18566.000000 52473.000000
+Doing Image 119
+Classification time 21164.000000 58816.000000
+Doing Image 343
+Classification time 21124.000000 58523.000000
+Doing Image 295
+Classification time 21212.000000 59342.000000
+Doing Image 192
+Classification time 21099.000000 58193.000000
+Doing Image 288
+Classification time 21321.000000 58143.000000
+Classification time 17184.000000 49717.000000
+Doing Image 43
+Doing Image 494
+Classification time 19366.000000 53835.000000
+Doing Image 269
+Classification time 21512.000000 59341.000000
+Doing Image 120
+Classification time 21887.000000 60430.000000
+Doing Image 344
+Classification time 22363.000000 61564.000000
+Doing Image 296
+Classification time 21980.000000 60345.000000
+Doing Image 193
+Classification time 22503.000000 60238.000000
+Doing Image 289
+Classification time 21466.000000 58827.000000
+Doing Image 44
+Classification time 21867.000000 61146.000000
+Doing Image 495
+Classification time 22384.000000 60150.000000
+Doing Image 270
+Classification time 21542.000000 59227.000000
+Doing Image 121
+Classification time 21279.000000 59229.000000
+Doing Image 345
+Classification time 21028.000000 58945.000000
+Doing Image 297
+Classification time 18873.000000 52897.000000
+Doing Image 194
+Classification time 18484.000000 52107.000000
+Doing Image 206
+Classification time 18534.000000 51684.000000
+Doing Image 45
+Classification time 19214.000000 53608.000000
+Doing Image 271
+Classification time 21155.000000 59133.000000
+Doing Image 496
+Classification time 18464.000000 52118.000000
+Doing Image 122
+Classification time 7893.000000 26711.000000
+Doing Image 46
+Classification time 18708.000000 53937.000000
+Doing Image 346
+Classification time 13023.000000 41014.000000
+Doing Image 195
+Classification time 18468.000000 52786.000000
+Doing Image 298
+Classification time 11561.000000 37777.000000
+Doing Image 123
+Classification time 21515.000000 58753.000000
+Doing Image 272
+Classification time 21025.000000 57826.000000
+Doing Image 497
+Classification time 27891.000000 73824.000000
+Doing Image 207
+Classification time 20804.000000 57070.000000
+Doing Image 47
+Classification time 18924.000000 52552.000000
+Doing Image 196
+Classification time 21462.000000 59608.000000
+Doing Image 347
+Classification time 22463.000000 61759.000000
+Doing Image 299
+Classification time 21109.000000 58598.000000
+Doing Image 124
+Classification time 10408.000000 32113.000000
+Doing Image 197
+Classification time 21127.000000 58573.000000
+Doing Image 273
+Classification time 20935.000000 58127.000000
+Doing Image 498
+Classification time 23537.000000 63589.000000
+Doing Image 208
+Classification time 21444.000000 57541.000000
+Doing Image 48
+Classification time 19805.000000 53336.000000
+Doing Image 348
+Classification time 18709.000000 51995.000000
+Doing Image 131
+Classification time 21082.000000 58932.000000
+Doing Image 125
+Classification time 21167.000000 59239.000000
+Doing Image 198
+Classification time 15493.000000 45269.000000
+Doing Image 209
+Classification time 21157.000000 58910.000000
+Doing Image 349
+Classification time 30239.000000 78403.000000
+Doing Image 274
+Classification time 21076.000000 58447.000000
+Doing Image 132
+Classification time 30291.000000 78290.000000
+Doing Image 499
+Classification time 25108.000000 66510.000000
+Doing Image 49
+Classification time 21180.000000 58945.000000
+Doing Image 126
+Classification time 21229.000000 59045.000000
+Doing Image 199
+Classification time 21670.000000 59632.000000
+Doing Image 210
+Classification time 19463.000000 53964.000000
+Doing Image 133
+Classification time 22011.000000 59923.000000
+Doing Image 350
+Classification time 22114.000000 60059.000000
+Doing Image 275
+Classification time 21631.000000 59943.000000
+Doing Image 500
+Classification time 22205.000000 59157.000000
+Doing Image 50
+Classification time 22094.000000 60162.000000
+Doing Image 127
+Classification time 7390.000000 25450.000000
+Doing Image 51
+Classification time 22235.000000 61155.000000
+Doing Image 200
+Classification time 21308.000000 58990.000000
+Doing Image 211
+Classification time 19852.000000 55027.000000
+Doing Image 276
+Classification time 23265.000000 63285.000000
+Doing Image 134
+Classification time 20201.000000 56894.000000
+Doing Image 501
+Classification time 23482.000000 64989.000000
+Doing Image 351
+Classification time 16179.000000 47904.000000
+Doing Image 52
+Classification time 21236.000000 57909.000000
+Doing Image 128
+Classification time 22879.000000 62146.000000
+Doing Image 212
+Classification time 24597.000000 67498.000000
+Doing Image 201
+Classification time 20158.000000 56828.000000
+Doing Image 502
+Classification time 20150.000000 55441.000000
+Doing Image 352
+Classification time 23044.000000 63487.000000
+Doing Image 277
+Classification time 22824.000000 62678.000000
+Doing Image 135
+Classification time 22760.000000 61486.000000
+Doing Image 53
+Classification time 19861.000000 55870.000000
+Doing Image 129
+Classification time 20995.000000 56154.000000
+Doing Image 202
+Classification time 22900.000000 62718.000000
+Doing Image 213
+Classification time 19671.000000 53755.000000
+Doing Image 353
+Classification time 19679.000000 54538.000000
+Doing Image 278
+Classification time 22262.000000 61738.000000
+Doing Image 503
+Classification time 22162.000000 60983.000000
+Doing Image 136
+Classification time 19216.000000 53449.000000
+Doing Image 130
+Classification time 21384.000000 58217.000000
+Doing Image 54
+Classification time 21754.000000 60087.000000
+Doing Image 214
+Classification time 24456.000000 65684.000000
+Doing Image 203
+Classification time 18681.000000 52278.000000
+Doing Image 504
+Classification time 21848.000000 60446.000000
+Classification time 21508.000000 59501.000000
+Doing Image 354
+Doing Image 279
+Classification time 19339.000000 53249.000000
+Doing Image 137
+Classification time 18416.000000 52175.000000
+Doing Image 140
+Classification time 23434.000000 62899.000000
+Doing Image 55
+Classification time 19884.000000 53483.000000
+Doing Image 215
+Classification time 19242.000000 53512.000000
+Doing Image 204
+Classification time 19367.000000 53441.000000
+Doing Image 280
+Classification time 21688.000000 60064.000000
+Doing Image 505
+Classification time 19563.000000 53800.000000
+Doing Image 138
+Classification time 21379.000000 59087.000000
+Doing Image 355
+Classification time 15615.000000 46193.000000
+Doing Image 56
+Classification time 21472.000000 59522.000000
+Doing Image 141
+Classification time 16037.000000 46879.000000
+Doing Image 216
+Classification time 19369.000000 53377.000000
+Doing Image 205
+Classification time 19912.000000 53220.000000
+Doing Image 139
+Classification time 19237.000000 52922.000000
+Doing Image 356
+Classification time 21341.000000 59331.000000
+Doing Image 375
+Classification time 27902.000000 73432.000000
+Classification time 21487.000000 58738.000000
+Doing Image 506
+Doing Image 57
+Classification time 24746.000000 66501.000000
+Doing Image 142
+Classification time 21303.000000 59222.000000
+Doing Image 217
+Classification time 21447.000000 59693.000000
+Doing Image 145
+Classification time 18920.000000 54422.000000
+Doing Image 147
+Classification time 19032.000000 52807.000000
+Doing Image 376
+Classification time 19039.000000 54317.000000
+Doing Image 357
+Classification time 18770.000000 52613.000000
+Doing Image 507
+Classification time 21198.000000 58065.000000
+Doing Image 58
+Classification time 21514.000000 59555.000000
+Doing Image 143
+Classification time 21448.000000 59887.000000
+Doing Image 218
+Classification time 19041.000000 52553.000000
+Doing Image 148
+Classification time 18900.000000 53317.000000
+Doing Image 358
+Classification time 21862.000000 59861.000000
+Doing Image 377
+Classification time 31101.000000 79885.000000
+Doing Image 146
+Classification time 21944.000000 60367.000000
+Doing Image 508
+Classification time 22102.000000 58604.000000
+Doing Image 59
+Classification time 21557.000000 59282.000000
+Doing Image 144
+Classification time 19067.000000 52932.000000
+Doing Image 219
+Classification time 19839.000000 53000.000000
+Doing Image 359
+Classification time 21300.000000 59633.000000
+Doing Image 149
+Classification time 21645.000000 59742.000000
+Classification time 11731.000000 38062.000000
+Doing Image 60
+Doing Image 378
+Classification time 19505.000000 53913.000000
+Doing Image 220
+Classification time 19090.000000 53470.000000
+Doing Image 509
+Classification time 18926.000000 52730.000000
+Doing Image 515
+Classification time 19390.000000 52569.000000
+Doing Image 412
+Classification time 19820.000000 53092.000000
+Doing Image 360
+Classification time 18996.000000 51990.000000
+Doing Image 61
+Classification time 19227.000000 53366.000000
+Doing Image 379
+Classification time 23770.000000 64827.000000
+Doing Image 365
+Classification time 19384.000000 53360.000000
+Doing Image 221
+Classification time 19412.000000 53285.000000
+Doing Image 510
+Classification time 19063.000000 53227.000000
+Doing Image 413
+Classification time 21439.000000 59568.000000
+Doing Image 516
+Classification time 11066.000000 34470.000000
+Doing Image 222
+Classification time 21761.000000 60290.000000
+Doing Image 361
+Classification time 19191.000000 53190.000000
+Doing Image 380
+Classification time 21276.000000 58368.000000
+Doing Image 62
+Classification time 21474.000000 59081.000000
+Doing Image 366
+Classification time 22067.000000 60054.000000
+Doing Image 511
+Classification time 18053.000000 51667.000000
+Doing Image 517
+Classification time 21736.000000 60012.000000
+Doing Image 414
+Classification time 21598.000000 59487.000000
+Doing Image 223
+Classification time 21543.000000 59166.000000
+Doing Image 362
+Classification time 17373.000000 48892.000000
+Doing Image 367
+Classification time 22351.000000 61481.000000
+Doing Image 381
+Classification time 21687.000000 59421.000000
+Doing Image 63
+Classification time 21463.000000 59680.000000
+Doing Image 512
+Classification time 19024.000000 52970.000000
+Doing Image 415
+Classification time 21588.000000 59538.000000
+Doing Image 518
+Classification time 19857.000000 52803.000000
+Doing Image 224
+Classification time 19061.000000 52612.000000
+Doing Image 368
+Classification time 21974.000000 59619.000000
+Doing Image 363
+Classification time 18552.000000 53027.000000
+Doing Image 64
+Classification time 21236.000000 59617.000000
+Doing Image 382
+Classification time 18689.000000 52513.000000
+Doing Image 513
+Classification time 21816.000000 60497.000000
+Doing Image 416
+Classification time 21401.000000 59080.000000
+Doing Image 519
+Classification time 24047.000000 64597.000000
+Doing Image 370
+Classification time 19567.000000 52627.000000
+Doing Image 364
+Classification time 18491.000000 52694.000000
+Doing Image 65
+Classification time 24841.000000 66523.000000
+Doing Image 369
+Classification time 21692.000000 60002.000000
+Doing Image 383
+Classification time 17939.000000 50995.000000
+Doing Image 514
+Classification time 14405.000000 43522.000000
+Doing Image 417
+Classification time 4110.000000 16683.000000
+Doing Image 418
+Classification time 22760.000000 62492.000000
+Doing Image 520
+Classification time 19437.000000 54076.000000
+Doing Image 371
+Classification time 21513.000000 59843.000000
+Doing Image 393
+Classification time 21763.000000 59020.000000
+Doing Image 66
+Classification time 19441.000000 53620.000000
+Doing Image 384
+Classification time 18885.000000 53507.000000
+Doing Image 522
+Classification time 21725.000000 60212.000000
+Doing Image 388
+Classification time 17768.000000 50549.000000
+Doing Image 419
+Classification time 18808.000000 53408.000000
+Doing Image 521
+Classification time 19359.000000 53701.000000
+Doing Image 372
+Classification time 19521.000000 54122.000000
+Doing Image 394
+Classification time 18868.000000 53664.000000
+Doing Image 67
+Classification time 18223.000000 52471.000000
+Doing Image 523
+Classification time 22723.000000 62278.000000
+Doing Image 385
+Classification time 22694.000000 63043.000000
+Doing Image 389
+Classification time 20812.000000 56602.000000
+Doing Image 420
+Classification time 22809.000000 62825.000000
+Doing Image 70
+Classification time 20142.000000 55119.000000
+Doing Image 373
+Classification time 22217.000000 60038.000000
+Doing Image 68
+Classification time 22746.000000 62429.000000
+Doing Image 395
+Classification time 19248.000000 53333.000000
+Doing Image 386
+Classification time 24414.000000 65499.000000
+Doing Image 524
+Classification time 21725.000000 60132.000000
+Doing Image 390
+Classification time 4213.000000 17870.000000
+Doing Image 69
+Classification time 21620.000000 59978.000000
+Doing Image 421
+Classification time 17617.000000 50871.000000
+Doing Image 71
+Classification time 22704.000000 60770.000000
+Doing Image 374
+Classification time 17144.000000 48195.000000
+Doing Image 387
+Classification time 20241.000000 56390.000000
+Doing Image 396
+Classification time 19762.000000 54248.000000
+Doing Image 391
+Classification time 15459.000000 43233.000000
+Doing Image 422
+Classification time 30130.000000 76821.000000
+Doing Image 392
+Classification time 22324.000000 61240.000000
+Doing Image 72
+Classification time 23479.000000 63998.000000
+Doing Image 431
+Classification time 22841.000000 62902.000000
+Doing Image 440
+Classification time 21741.000000 58743.000000
+Doing Image 402
+Classification time 22942.000000 62160.000000
+Doing Image 407
+Classification time 25152.000000 68400.000000
+Doing Image 423
+Classification time 34427.000000 87056.000000
+Doing Image 397
+Classification time 26218.000000 69312.000000
+Doing Image 445
+Classification time 26357.000000 71475.000000
+Doing Image 73
+Classification time 22943.000000 62643.000000
+Doing Image 432
+Classification time 25531.000000 67744.000000
+Doing Image 441
+Classification time 25257.000000 68447.000000
+Doing Image 403
+Classification time 24477.000000 66459.000000
+Doing Image 408
+Classification time 20251.000000 57228.000000
+Doing Image 446
+Classification time 24434.000000 65273.000000
+Doing Image 424
+Classification time 24188.000000 65025.000000
+Doing Image 398
+Classification time 23154.000000 63048.000000
+Doing Image 433
+Classification time 26542.000000 70264.000000
+Doing Image 74
+Classification time 16517.000000 47895.000000
+Doing Image 404
+Classification time 20613.000000 55173.000000
+Doing Image 442
+Classification time 18567.000000 53055.000000
+Doing Image 447
+Classification time 22039.000000 60684.000000
+Doing Image 409
+Classification time 20052.000000 54744.000000
+Doing Image 399
+Classification time 22217.000000 61165.000000
+Doing Image 425
+Classification time 18872.000000 52630.000000
+Doing Image 405
+Classification time 22251.000000 60105.000000
+Doing Image 434
+Classification time 22420.000000 60331.000000
+Doing Image 435
+Classification time 22005.000000 60815.000000
+Doing Image 443
+Classification time 21601.000000 58737.000000
+Doing Image 448
+Classification time 18534.000000 52905.000000
+Doing Image 400
+Classification time 21620.000000 59898.000000
+Doing Image 410
+Classification time 21433.000000 59198.000000
+Doing Image 426
+Classification time 18193.000000 52469.000000
+Doing Image 406
+Classification time 19032.000000 53406.000000
+Doing Image 444
+Classification time 23234.000000 62314.000000
+Doing Image 428
+Classification time 21468.000000 59680.000000
+Doing Image 436
+Classification time 18603.000000 51517.000000
+Doing Image 449
+Classification time 21494.000000 59263.000000
+Doing Image 401
+Classification time 21268.000000 58950.000000
+Doing Image 411
+Classification time 21300.000000 58835.000000
+Doing Image 427
+Classification time 18316.000000 51936.000000
+Doing Image 429
+Classification time 18482.000000 52210.000000
+Doing Image 437
+Classification time 22141.000000 59974.000000
+Doing Image 430
+Classification time 30883.000000 79658.000000
+Doing Image 438
+Classification time 17897.000000 51175.000000
+Doing Image 439
+Classification time 19535.000000 52398.000000
+Classification time 21244.000000 59210.000000
+Classification time 21023.000000 58010.000000
+Classification time 18888.000000 53113.000000
+Classification time 18706.000000 53309.000000
+Classification time 19570.000000 54432.000000
+Classification time 17721.000000 49718.000000
+Classification time 17260.000000 48898.000000
+Successfully produced unaries for first 1000th images
+ALL FINISHED, HAVE A NICE DAY BABY!
+COPYING TRAINING FILES
 START TRAINING SVM
 /home/rizkivmaster/ws/rizki/via-google/build/src/svm-struct-ss/svm_struct/do_learn -w 2 -c 1 -e 100 /home/rizkivmaster/ws/results/14736/combined_train_list /home/rizkivmaster/ws/results/14736/svm_model
-do_learn: /home/rizkivmaster/ws/rizki/via-google/src/svm-struct-ss/svm_struct_api.cpp:492: SVECTOR* psi(PATTERN, LABEL, STRUCTMODEL*, STRUCT_LEARN_PARM*): Assertion `(windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size' failed.
-./execute.sh: line 51: Reading: command not found
+./execute.sh: line 55: Reading: command not found

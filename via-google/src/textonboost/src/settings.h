@@ -29,7 +29,7 @@
 #pragma once
 // TODO: Make sure to adjust the parameters in this file
 //#define USE_MSRC
-const int CACHE_SIZE = 100;
+const int CACHE_SIZE = 1000;
 static const int N_TEXTONS = 50;
 static const float FILTER_BANK_SIZE = 1.0;
 // Boosting parameters
@@ -45,7 +45,7 @@ static const int MIN_RECT_SIZE      = BOOSTING_SUBSAMPLE; // Minimum size of tex
 static const int MAX_RECT_SIZE      = 200; // Maximum size of texton rectangle
 #define GAUSSIAN_OFFSET // Use Sample the offset from a gaussian centered at 0
 
-static const std::string VOC2010_DIRECTORY = "/home/rizkivmaster/ws/datasets/voc2010";
+static const std::string VOC2010_DIRECTORY = "/home/rizkivmaster/ws/datasets/smallVOC2010";
 static const std::string VOC2010_COLOR_PATH = VOC2010_DIRECTORY+"/VOC2010.ct";
 static const std::string EXPERIMENT_FOLDER = "/home/rizkivmaster/ws/results/14736";
 static const std::string VOC2010_PNG_FOLDER = VOC2010_DIRECTORY+"/SegmentationClass";
