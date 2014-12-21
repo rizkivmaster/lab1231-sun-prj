@@ -84,7 +84,7 @@ void save_image(char* filename, Eigen::MatrixXi m);
 Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const string unary_dir,EnergyParam energy_param,const size_t object_label);
 Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const string unary_dir,EnergyParam energy_param);
 Eigen::MatrixXi annotate(size_t n_label, cv::Mat &image_matrix, ProbImage &unary_matrix, double* unary_weights, double * pair_weights);
-Eigen::MatrixXi annotateWithLoss(size_t n_label, cv::Mat &image_matrix, ProbImage &unary_matrix, double *unary_weights, double *pair_weights,Eigen::MatrixXi& ytrue);
+Eigen::MatrixXi annotateWithAugmentedLoss(size_t n_label, cv::Mat &image_matrix, ProbImage &unary_matrix, double *unary_weights, double *pair_weights,Eigen::MatrixXi& ytrue);
 
 /*!
  * @brief we use Shotton's unary based on Phillipp's implementation

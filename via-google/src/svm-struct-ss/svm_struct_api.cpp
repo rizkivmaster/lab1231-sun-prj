@@ -28,6 +28,7 @@
 
 #include "ssvm_ss_dataset_constraint.h"
 using namespace std;
+using namespace lab1231_sun_prj::util;
 
 inline size_t var_idx(size_t x, size_t y, size_t width)
 {
@@ -203,32 +204,61 @@ void set_pair_weights(STRUCTMODEL *sm, PATTERN x, double *weights)
         }
 }
 
-
-void infer(PATTERN x, LABEL &y, STRUCTMODEL *sm)
+LABEL inferWithLoss(PATTERN x, STRUCTMODEL *sm, LABEL &ytrue)
 {
-    //set target png
-    // QImage output_png;
-
-    printf("Infering %s ", x.image_path);
+    LABEL y;
+    // printf("Infering with loss%s ", x.image_path);
     Eigen::MatrixXi annotation_matrix(x.height, x.width);
-    // y.annotation_matrix = annotation_matrix;
     y.height = x.height;
     y.width = x.width;
     strcpy(y.dumping_path, x.dumping_path);
     y.n_label = ssvm_ss::image_constraint::n_label;
-    //     QString colorfile = "VOC2010.ct";
-    // QVector<QRgb> colorTable;
-    // QFile file(colorfile);
-    // if (!file.open(QFile::ReadOnly))
-    //     qFatal( "Failed to load '%s'", qPrintable( colorfile ) );
-    // QDataStream s(&file);
-    // s >> colorTable;
-    // file.close();
-    // y.png_matrix.setColorTable(colorTable);
-
-    // printf("w h %d %d\n", y.width, y.height);
 
 
+    double *unary_weights = (double *) malloc(sizeof(double) * x.width * x.height);
+    double *pair_weights = (double *) malloc(2 * sizeof(double) * (x.width - 1) * (x.height - 1));
+
+
+
+    // printf("ok 1\n");fflush(stdout);
+    set_unary_weights(sm, x, unary_weights);
+    // printf("ok 2\n");fflush(stdout);
+    set_pair_weights(sm, x, pair_weights);
+    // printf("ok 3\n");fflush(stdout);
+
+    ProbImage unary_matrix;
+    checkIfExists(x.unary_path);
+    unary_matrix.decompress(x.unary_path);
+
+    cv::Mat image_matrix;
+    checkIfExists(x.image_path);
+    image_matrix = cv::imread(x.image_path, CV_LOAD_IMAGE_COLOR);
+
+    size_t n_label = y.n_label;
+    y.annotation_matrix = lab1231_sun_prj::shotton::annotateWithAugmentedLoss(n_label, image_matrix, unary_matrix, unary_weights, pair_weights, ytrue.annotation_matrix);
+
+    // printf("Saving to %s\n", x.dumping_path);
+    // y.png_matrix.save(x.dumping_path,"png",0);
+
+
+    lab1231_sun_prj::shotton::save_image(y.dumping_path, y.annotation_matrix);
+    // printf("done inferring\n"); //fflush(stdout);
+
+    return y;
+
+    // y.png_matrix = x.bypass;
+    // x.bypass.save("temp_output","png",0);
+}
+
+
+void infer(PATTERN x, LABEL &y, STRUCTMODEL *sm)
+{
+    printf("Infering %s ", x.image_path);
+    Eigen::MatrixXi annotation_matrix(x.height, x.width);
+    y.height = x.height;
+    y.width = x.width;
+    strcpy(y.dumping_path, x.dumping_path);
+    y.n_label = ssvm_ss::image_constraint::n_label;
 
 
     double *unary_weights = (double *) malloc(sizeof(double) * x.width * x.height);
@@ -406,7 +436,7 @@ LABEL       find_most_violated_constraint_marginrescaling(PATTERN x, LABEL y,
        Psi(x,ybar)>Psi(x,y)-1. If the function cannot find a label, it
        shall return an empty label as recognized by the function
        empty_label(y). */
-    LABEL ybar = classify_struct_example(x, sm, sparm);
+    LABEL ybar = inferWithLoss(x, sm, y);
 
     /* insert your code for computing the label ybar here */
 
@@ -448,7 +478,7 @@ SVECTOR     *psi(PATTERN x, LABEL y, STRUCTMODEL *sm,
 
     /* insert code for computing the feature vector for x and y here */
 
-    printf("in psi "); fflush(stdout);
+    // printf("in psi "); fflush(stdout);
     SVECTOR *fvec = (SVECTOR *) my_malloc(sizeof(SVECTOR));
     fvec->words = (WORD *) my_malloc(sizeof(WORD) * (sm->sizePsi + 1));
     fvec->next = NULL;
@@ -476,7 +506,6 @@ SVECTOR     *psi(PATTERN x, LABEL y, STRUCTMODEL *sm,
     ProbImage unary_matrix;
     checkIfExists(x.unary_path);
     unary_matrix.load(x.unary_path);
-    printf("width %d height %d\n",unary_matrix.width(),unary_matrix.height());
 
     cv::Mat image_matrix;
     checkIfExists(x.image_path);
@@ -490,7 +519,7 @@ SVECTOR     *psi(PATTERN x, LABEL y, STRUCTMODEL *sm,
             //reduce dimensions
           if(!((windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size))printf("winoffsetx %d winoffsety %d xx %d yy %d winwidth %d imagemiddlex %d imagemiddley %d path %s\n",windowoffsetx,windowoffsety,xx,yy,windowwidth,imagemiddlex,imagemiddley,x.image_path);
             assert((windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size);
-            fvec->words[(windowoffsetx + xx) + (windowoffsety + yy)*windowwidth].weight = unary_matrix(xx, yy, y.annotation_matrix(yy, xx)); //make sure it is potential invers
+            fvec->words[(windowoffsetx + xx) + (windowoffsety + yy)*windowwidth].weight = -energy_probability(unary_matrix(xx, yy, y.annotation_matrix(yy, xx))); //make sure it is potential invers
         }
 
     assert(sm->sizePsi - windowoffset > 0);
