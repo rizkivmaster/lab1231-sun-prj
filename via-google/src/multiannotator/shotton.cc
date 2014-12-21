@@ -59,7 +59,7 @@ Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const strin
   GraphicalModel gm( opengm::SimpleDiscreteSpace<size_t, size_t>(n_var, n_label) );
 
   set_1st_order(img_mat, unary_matrix, n_label, gm);
-  set_2nd_order(img_mat, n_label, energy_param, gm);
+  set_2nd_order(img_mat, n_label,energy_param, gm);
 
   Eigen::MatrixXi ann(img_mat.rows, img_mat.cols);
   const string method = "AlphaExpansion";//: "AlphaExpansion", "ICM"

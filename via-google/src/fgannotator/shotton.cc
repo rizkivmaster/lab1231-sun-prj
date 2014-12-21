@@ -8,6 +8,11 @@ namespace lab1231_sun_prj
 namespace shotton
 {
 
+float energy_of_probability(double probability)
+{
+    return max(0.0,(double)-log(probability+DBL_EPSILON));
+}
+
 void train(const string datasets_name, EnergyParam *energy_param)
 {
     cout << "train(): BEGIN\n";
@@ -36,7 +41,7 @@ Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const strin
     ///read unary
     ProbImage unary_mat;
 
-    unary_mat.load( unary_dir.c_str() );
+    // unary_mat.load( unary_dir.c_str() );
 
     Saliency saliency;
     const cv::Mat_<double> saliencyMap = saliency.saliency(img_mat);
@@ -50,10 +55,10 @@ Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const strin
 
     set_1st_order(img_mat, saliencyMap, unary_mat, n_label, object_label, gm);
 
-    set_2nd_order(img_mat, n_label,object_label, energy_param, gm);
+    set_2nd_order(img_mat, energy_param, gm);
 
     Eigen::MatrixXi ann(img_mat.rows, img_mat.cols);
-    const string method = "AlphaExpansion";//: "AlphaExpansion", "ICM"
+    const string method = "MinCut";//: "AlphaExpansion", "ICM"
     infer(method, gm, n_var, ann);
 
     cout << "annotate(): END\n";
@@ -137,12 +142,12 @@ void infer(const string method, GraphicalModel gm, const size_t n_var, Eigen::Ma
 void set_1st_order(const cv::Mat img_mat, const cv::Mat_<double> saliency_mat, ProbImage unary_mat, const size_t n_label, const size_t object_label, GraphicalModel &gm)
 {
     float alpha = 1.0;
-    float label_penalty = 1.0;
+    float label_penalty = 100000.0;
     using namespace std;
-    printf("Unary width: %d\n",unary_mat.width());
-    printf("Unary height: %d\n",unary_mat.width());
-    assert(unary_mat.width() == img_mat.cols && "err width");
-    assert(unary_mat.height() == img_mat.rows && "err height");
+    // printf("Unary width: %d\n",unary_mat.width());
+    // printf("Unary height: %d\n",unary_mat.width());
+    // assert(unary_mat.width() == img_mat.cols && "err width");
+    // assert(unary_mat.height() == img_mat.rows && "err height");
 
 
     for (size_t x = 0; x < img_mat.cols; ++x)
@@ -150,44 +155,50 @@ void set_1st_order(const cv::Mat img_mat, const cv::Mat_<double> saliency_mat, P
         for (size_t y = 0; y < img_mat.rows; ++y)
         {
             // add a function
-            // const size_t shape[] = {2};
-            // opengm::ExplicitFunction<float> energy(shape, shape+1);
+            const size_t shape[] = {n_label};
+            opengm::ExplicitFunction<float> energy(shape, shape+1);
 
-            // //FIRST FORMULATION
-            // energy(1) = -unary_mat(x,y,object_label) + (1-saliency_mat.at<double>(y,x));
+            //saliency only
+            energy(1) = 0.05*energy_of_probability(saliency_mat.at<double>(y,x));
+            energy(0) = energy_of_probability(1.0-saliency_mat.at<double>(y,x));
+
+
+            // FIRST FORMULATION
+            // energy(1) = 0.1*energy_of_probability(unary_mat(x,y,object_label)) + energy_of_probability(saliency_mat.at<double>(y,x));
             // energy(0) = 100000000.0;
 
-            // for(size_t i = 0; i < n_label; i++)
+            // for(size_t i = 0; i < 21; i++)
             //   if(i!=object_label)
-            //     energy(0) = min(energy(0),unary_mat(x,y,i));
+            //     energy(0) = min(energy(0), (float)energy_of_probability(unary_mat(x,y,i)));
 
-            // energy(0) +=alpha*saliency_mat.at<double>(y,x);
+            // energy(0) +=energy_of_probability(1.0-saliency_mat.at<double>(y,x));
+            
             //SECOND FORMULATION
 
             // add a function
-            const size_t shape[] = {n_label};
-            opengm::ExplicitFunction<float> energy(shape, shape + 1);
+            // const size_t shape[] = {n_label};
+            // opengm::ExplicitFunction<float> energy(shape, shape + 1);
 
             
 
-            for (size_t i = 0; i < n_label; i++)
-            {
-                energy(i) = -unary_mat(x, y, i);
+            // for (size_t i = 0; i < n_label; i++)
+            // {
+            //     energy(i) = 0;
+            //     // energy(i) = energy_of_probability(unary_mat(x, y, i));
 
-                if (i != object_label)
-                {
-                    energy(i) += alpha * saliency_mat.at<double>(y, x);
-                }
-                else
-                {
-                    energy(i) += 0.5 * (1 - saliency_mat.at<double>(y, x));
-                }
+            //     if (i != object_label)
+            //     {
+            //         energy(i) += 0.5*energy_of_probability(1.0-saliency_mat.at<double>(y, x));
+            //     }
+            //     else
+            //     {
+            //         energy(i) += energy_of_probability(saliency_mat.at<double>(y, x));
+            //     }
 
-                // energy(0) += alpha * saliency_mat.at<double>(y, x);
-                // energy(object_label) += alpha * (1 - saliency_mat.at<double>(y, x));
-                if (i != object_label && i != 0 )
-                    energy(i) += label_penalty;
-            }
+                
+            //      // if (i != object_label && i != 0 )
+            //      //     energy(i) += label_penalty;
+            // }
 
             GraphicalModel::FunctionIdentifier fid = gm.addFunction(energy);
 
@@ -200,7 +211,7 @@ void set_1st_order(const cv::Mat img_mat, const cv::Mat_<double> saliency_mat, P
     }
 }
 
-void set_2nd_order(cv::Mat img_mat, const size_t n_label, const size_t object_label, EnergyParam energy_param, GraphicalModel &gm)
+void set_2nd_order(cv::Mat img_mat, EnergyParam energy_param, GraphicalModel &gm)
 {
     // Params needed by the Pott model
 
@@ -231,6 +242,7 @@ void set_2nd_order(cv::Mat img_mat, const size_t n_label, const size_t object_la
 
                 float unequal_pen;
                 unequal_pen = edge_potential::potential(img_mat.at<cv::Vec3b>(p1), img_mat.at<cv::Vec3b>(p2), beta, theta_phi);
+                // unequal_pen = lab1231_sun_prj::util::l1_norm_squared(img_mat.at<cv::Vec3b>(p1), img_mat.at<cv::Vec3b>(p2));
 
                 //
                 opengm::PottsFunction<float> pott(2, 2, equal_pen, unequal_pen);
@@ -251,6 +263,7 @@ void set_2nd_order(cv::Mat img_mat, const size_t n_label, const size_t object_la
 
                 float unequal_pen;
                 unequal_pen = edge_potential::potential(img_mat.at<cv::Vec3b>(p1), img_mat.at<cv::Vec3b>(p2), beta, theta_phi);
+                // unequal_pen = lab1231_sun_prj::util::l1_norm_squared(img_mat.at<cv::Vec3b>(p1), img_mat.at<cv::Vec3b>(p2));
 
                 //
                 opengm::PottsFunction<float> pott(2, 2, equal_pen, unequal_pen);

@@ -109,3 +109,7 @@ cv::Mat sun::util::ann2img(const Eigen::MatrixXi& ann, const std::string& datase
   
   return img;
 }
+
+float sun::util::energy_probability(double probability){
+  return max(0.0,(double) -log(probability+DB_EPSILON));
+}

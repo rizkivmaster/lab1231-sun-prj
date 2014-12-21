@@ -169,6 +169,9 @@ Eigen::MatrixXi arr2mat(int* arr, const size_t& n_row, const size_t& n_col);
  cv::Mat ann2img(const Eigen::MatrixXi& ann, const std::string& dataset);
 
 
+ float energy_probability(double probability);
+
+
 
 }// namespace util
 } // namespace lab1231_sun_prj

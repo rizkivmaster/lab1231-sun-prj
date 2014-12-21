@@ -15,28 +15,28 @@
 #include "../textonboost/src/settings.h"
 
 
-// void png_write(Eigen::MatrixXi m, QString png_path,size_t label) {
+void png_write(Eigen::MatrixXi m, QString png_path,size_t label) {
 
-//   QString colorfile = "VOC2010.ct";
-//   QVector<QRgb> colorTable;
-//   QFile file(colorfile);
-//   if (!file.open(QFile::ReadOnly))
-//               qFatal( "Failed to load '%s'", qPrintable( colorfile ) );
-//   QDataStream s(&file);
-//   s >> colorTable;
-//   file.close();
+  QString colorfile = VOC2010_COLOR_PATH.c_str();
+  QVector<QRgb> colorTable;
+  QFile file(colorfile);
+  if (!file.open(QFile::ReadOnly))
+              qFatal( "Failed to load '%s'", qPrintable( colorfile ) );
+  QDataStream s(&file);
+  s >> colorTable;
+  file.close();
 
-//   QImage targetPNG(m.cols(),m.rows(),QImage::Format_Indexed8);
+  QImage targetPNG(m.cols(),m.rows(),QImage::Format_Indexed8);
   
-//   targetPNG.setColorTable(colorTable);
-//   for(int  ii=0; ii<m.rows(); ii++){
-//     for(int jj=0; jj<m.cols(); jj++){
-//       if(m(ii,jj)==1) targetPNG.setPixel(jj,ii,label);
-//       if(m(ii,jj)==0) targetPNG.setPixel(jj,ii,255);
-//     }
-//   }
-//   targetPNG.save(png_path,"png",0);
-// }
+  targetPNG.setColorTable(colorTable);
+  for(int  ii=0; ii<m.rows(); ii++){
+    for(int jj=0; jj<m.cols(); jj++){
+      if(m(ii,jj)==1) targetPNG.setPixel(jj,ii,label);
+      if(m(ii,jj)==0) targetPNG.setPixel(jj,ii,255);
+    }
+  }
+  targetPNG.save(png_path,"png",0);
+}
 
 void png_write(Eigen::MatrixXi m, QString png_path) {
 
@@ -86,8 +86,8 @@ int main(int argc, char* argv[]) {
   // util::csv_write(ann, ann_dir);
   // cv::Mat output = util::ann2img(ann,"msrc");
   // imwrite(ann_img_dir,output);
-    // png_write(ann,png_dir,object_label);
-    png_write(ann,png_dir);
+    png_write(ann,png_dir,object_label);
+    // png_write(ann,png_dir);
 
 
   // Annotate
