@@ -228,7 +228,7 @@ LABEL inferWithLoss(PATTERN x, STRUCTMODEL *sm, LABEL &ytrue)
 
     ProbImage unary_matrix;
     checkIfExists(x.unary_path);
-    unary_matrix.decompress(x.unary_path);
+    unary_matrix.load(x.unary_path);
 
     cv::Mat image_matrix;
     checkIfExists(x.image_path);
@@ -517,9 +517,12 @@ SVECTOR     *psi(PATTERN x, LABEL y, STRUCTMODEL *sm,
         for (size_t yy = 0; yy < x.height; yy++)
         {
             //reduce dimensions
-          if(!((windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size))printf("winoffsetx %d winoffsety %d xx %d yy %d winwidth %d imagemiddlex %d imagemiddley %d path %s\n",windowoffsetx,windowoffsety,xx,yy,windowwidth,imagemiddlex,imagemiddley,x.image_path);
-            assert((windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size);
-            fvec->words[(windowoffsetx + xx) + (windowoffsety + yy)*windowwidth].weight = -energy_probability(unary_matrix(xx, yy, y.annotation_matrix(yy, xx))); //make sure it is potential invers
+          //if(!((windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size))printf("winoffsetx %d winoffsety %d xx %d yy %d winwidth %d imagemiddlex %d imagemiddley %d path %s\n",windowoffsetx,windowoffsety,xx,yy,windowwidth,imagemiddlex,imagemiddley,x.image_path);
+            //assert((windowoffsetx + xx) + (windowoffsety + yy)*windowwidth < ssvm_ss::image_constraint::unary_size);
+	float energy_unary = 0.0;
+	if(y.annotation_matrix(yy,xx)!=255)
+		energy_unary=energy_probability(unary_matrix(xx, yy, y.annotation_matrix(yy, xx)));
+            fvec->words[(windowoffsetx + xx) + (windowoffsety + yy)*windowwidth].weight = -energy_unary; //make sure it is potential invers
         }
 
     assert(sm->sizePsi - windowoffset > 0);

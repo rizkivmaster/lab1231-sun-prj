@@ -119,7 +119,18 @@ void set_1st_orderWithLoss(cv::Mat img_mat, ProbImage unary_matrix, double *unar
 
             for (size_t i = 0; i < n_label; i++)
             {
-                energy(i) =  max(0.0, unary_weights[util::flat_idx(x, y, img_mat.cols)]) * energy_probability(unary_matrix(5 * x, 5 * y, i)) - (i != ytrue(y, x) ? 1.0 : 0.0);
+		float hinge_loss = 0;
+                //make sure target pixel is not void, void gains zero loss
+                if(ytrue(y,x) != 255)
+                {
+                    //different labels apply
+                    if(i!=ytrue(y,x))
+                        hinge_loss = 1.0;
+                }
+
+                energy(i) =  (float)max(0.0,unary_weights[util::flat_idx(x, y, img_mat.cols)]) * energy_probability(unary_matrix(x, y,i))-hinge_loss;
+
+                //energy(i) =  max(0.0, unary_weights[util::flat_idx(x, y, img_mat.cols)]) * energy_probability(unary_matrix(5 * x, 5 * y, i)) - (i != ytrue(y, x) ? 1.0 : 0.0);
             }
             GraphicalModel::FunctionIdentifier fid = gm.addFunction(energy);
             size_t var_idxes[] = {util::flat_idx(x, y, img_mat.cols)};
@@ -414,6 +425,8 @@ void get_2nd_order_psi(cv::Mat &img_mat, Eigen::MatrixXi &annotation_matrix, dou
                 float unequal_pen;
                 unequal_pen = edge_potential::potential(img_mat.at<cv::Vec3b>(p1), img_mat.at<cv::Vec3b>(p2), beta, theta_phi);
 
+		if(annotation_matrix(y, x)==255 ||annotation_matrix(y, x+1)==255) 
+                    unequal_pen=equal_pen;
                 psi[x + y * (img_mat.cols - 1)] = annotation_matrix(y, x) == annotation_matrix(y, x + 1) ? equal_pen : unequal_pen; //horizontal psi
             }
 
@@ -428,6 +441,9 @@ void get_2nd_order_psi(cv::Mat &img_mat, Eigen::MatrixXi &annotation_matrix, dou
 
                 float unequal_pen;
                 unequal_pen = edge_potential::potential(img_mat.at<cv::Vec3b>(p1), img_mat.at<cv::Vec3b>(p2), beta, theta_phi);
+		
+		 if(annotation_matrix(y, x)==255 ||annotation_matrix(y+1, x)==255) 
+                    unequal_pen=equal_pen;
 
                 psi[psioffset + x + y * (img_mat.cols - 1) ] = annotation_matrix(y, x) == annotation_matrix(y + 1, x) ? equal_pen : unequal_pen; //vertical psi
 
