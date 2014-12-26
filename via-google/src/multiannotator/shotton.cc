@@ -34,8 +34,6 @@ void save_image(char *filename, Eigen::MatrixXi m)
 
 void train(const string datasets_name, EnergyParam *energy_param)
 {
-    // cout << "train(): BEGIN\n";
-
     if (strcmp(datasets_name.c_str(), "VOC") == 0)
     {
         // From [Shotton, 2009                                                 ]
@@ -54,7 +52,7 @@ void train(const string datasets_name, EnergyParam *energy_param)
 
 
 }*/
-
+//for regular use
 Eigen::MatrixXi annotate(const size_t n_label, const string img_dir, const string unary_dir, EnergyParam energy_param)
 {
     //read image file
@@ -207,7 +205,8 @@ void set_1st_order(const cv::Mat img_mat, ProbImage unary_matrix, const size_t n
             opengm::ExplicitFunction<float> energy(shape, shape + 1);
 
             for (size_t i = 0; i < n_label; i++)
-                energy(i) = -unary_matrix(x, y, i);
+                // energy(i) = -unary_matrix(x, y, i);
+                energy(i) = energy_probability(unary_matrix(x, y,i));
             GraphicalModel::FunctionIdentifier fid = gm.addFunction(energy);
 
             // add a factor
@@ -249,6 +248,7 @@ void set_1st_order(cv::Mat img_mat, ProbImage unary_matrix, double *unary_weight
     }
 }
 
+//for regular use
 void set_2nd_order(cv::Mat img_mat, const size_t n_label, EnergyParam energy_param, GraphicalModel &gm)
 {
     // Params needed by the Pott model
